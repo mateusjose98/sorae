@@ -1,6 +1,6 @@
 package pkg.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,17 +15,17 @@ public class Atividade {
 	private Long codigo;
 	private String titulo;
 	private String descricao;
-	private LocalDate dataPostagem;
-	private LocalDate dataEntrega;
-	private Integer nota;
+	private LocalDateTime dataPostagem;
+	private LocalDateTime dataEntrega;
+	private Double nota;
 	private String tipo;
 	
 	public Atividade() {
 	}
 	
 
-	public Atividade(Long codigo, String titulo, String descricao, LocalDate dataPostagem, LocalDate dataEntrega,
-			Integer nota, String tipo) {
+	public Atividade(Long codigo, String titulo, String descricao, LocalDateTime dataPostagem, LocalDateTime dataEntrega,
+			Double nota, String tipo) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
@@ -57,22 +57,22 @@ public class Atividade {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public LocalDate getDataPostagem() {
+	public LocalDateTime getDataPostagem() {
 		return dataPostagem;
 	}
-	public void setDataPostagem(LocalDate dataPostagem) {
+	public void setDataPostagem(LocalDateTime dataPostagem) {
 		this.dataPostagem = dataPostagem;
 	}
-	public LocalDate getDataEntrega() {
+	public LocalDateTime getDataEntrega() {
 		return dataEntrega;
 	}
-	public void setDataEntrega(LocalDate dataEntrega) {
+	public void setDataEntrega(LocalDateTime dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
-	public Integer getNota() {
+	public Double getNota() {
 		return nota;
 	}
-	public void setNota(Integer nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
 	public String getTipo() {
