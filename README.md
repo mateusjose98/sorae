@@ -6,10 +6,10 @@
 
 ### Requisitos Funcionais [RFs]:
 
-- [RF1] - O sistema permite cadastrar Aluno;
-- [RF2] - O sistema permite cadastrar Professor;
-- [RF3] - O sistema permite cadastrar Disciplina;
-- [RF4] - O sistema permite cadastrar Atividades;
+- [RF1] - O sistema permite crud de Aluno;
+- [RF2] - O sistema permite crud de Professor;
+- [RF3] - O sistema permite crud de Disciplina;
+- [RF4] - O sistema permite crud de Atividades;
 - [RF5] - O sistema deve possuir área de autenticação para Aluno, Professor e Coordenação;
 - [RF5] - A Coordenação faz as atrbuições de disciplinas a professores;
 - [RF6] - A Coordenação faz as matrículas de novos alunos;
