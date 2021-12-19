@@ -37,6 +37,8 @@
 
 ![texto](./modelo-sorae-v1.png)
 
+![texto](./DiagramadeCasodeUso.jpeg)
+
 
 ### Tecnologias usadas:
 - Java;
