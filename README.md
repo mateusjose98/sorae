@@ -37,6 +37,8 @@
 
 ![texto](./modelo-sorae-v1.png)
 
+### Diagrama de casos de uso:
+
 ![texto](./DiagramadeCasodeUso.jpeg)
 
 
