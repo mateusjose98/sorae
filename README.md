@@ -20,7 +20,6 @@
 - [RF11]- O Aluno enviar resposta a atividades/provas;
 - [RF12]- O sistema gera um resumo (histórico acadêmico) do aluno;
 
-
 ### Requisitos não funcionais [RNFs]:
 
 - [RNF1] - O sistema deverá ter alta disponibilidade, ser operável 24h por dia;
@@ -37,12 +36,16 @@
 
 ![texto](./modelo-sorae-v1.png)
 
-
 ### Tecnologias usadas:
+
 - Java;
 - Ecossistema Spring;
 - JavaScript.
 
 ### Como testar o projeto?
 
-* *Este projeto está sendo feito para fins acadêmicos para a disciplina de Projeto e Desenvolvimento de Software, no curso Bacharelado Intedisciplinar em Ciência e Tec.*
+Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/oauth/token, nessa requisição, você deverá passar no Authorization Basic username:frontappid e senha:frontappsenha e no body x-www-form-urlencoded username:teste, password:teste, grant_type:password, isso deve lhe dar um token
+
+- - JDK 11
+
+- _Este projeto está sendo feito para fins acadêmicos para a disciplina de Projeto e Desenvolvimento de Software, no curso Bacharelado Intedisciplinar em Ciência e Tec._
