@@ -17,6 +17,7 @@ public class Professor {
     private String email;
     private String telefone;
     private String ocupacao;
+    private Boolean ativo = true;
 
     //Construtor
 public Professor(String nome, String idprofessor, String email, String telefone, String ocupacao) {
