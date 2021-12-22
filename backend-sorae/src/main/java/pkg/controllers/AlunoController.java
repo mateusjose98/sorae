@@ -8,7 +8,7 @@ import pkg.models.Aluno;
 import pkg.services.AlunoService;
 
 @RestController
-@RequestMapping("/aluno")
+@RequestMapping("/alunos")
 public class AlunoController {
 
     @Autowired

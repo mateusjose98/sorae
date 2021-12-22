@@ -1,8 +1,8 @@
 package pkg.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
@@ -36,7 +36,7 @@ public class Usuario implements UserDetails {
 	@JoinTable(name = "usuario_perfil", 
 			   joinColumns = @JoinColumn(name = "usuario_id"), 
 			   inverseJoinColumns = @JoinColumn(name = "perfil_id"))
-	private Set<Perfil> perfis = new HashSet<>();
+	private List<Perfil> perfis = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -109,8 +109,12 @@ public class Usuario implements UserDetails {
 		return true;
 	}
 
-	public Set<Perfil> getPerfis() {
+	public List<Perfil> getPerfis() {
 		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
 	}
 
 

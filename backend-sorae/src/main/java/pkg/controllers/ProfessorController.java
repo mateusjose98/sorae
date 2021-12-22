@@ -17,7 +17,7 @@ import pkg.models.Professor;
 import pkg.services.ProfessorService;
 
 @RestController
-@RequestMapping("/ professor")
+@RequestMapping("/professor")
 
 public class ProfessorController {
 

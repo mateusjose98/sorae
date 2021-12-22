@@ -19,7 +19,7 @@ import pkg.models.Atividade;
 import pkg.services.AtividadeService;
 
 @RestController
-@RequestMapping(value = "atividades")
+@RequestMapping(value = "/atividades")
 public class AtividadeController {
 	
 	@Autowired
