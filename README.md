@@ -36,14 +36,10 @@
 
 ![texto](./modelo-sorae-v1.png)
 
-<<<<<<< HEAD
 ### Diagrama de casos de uso:
 
 ![texto](./DiagramadeCasodeUso.jpeg)
 
-
-=======
->>>>>>> refs/heads/dev
 ### Tecnologias usadas:
 
 - Java;
@@ -52,8 +48,6 @@
 
 ### Como testar o projeto?
 
-Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/oauth/token, nessa requisição, você deverá passar no Authorization Basic username:frontappid e senha:frontappsenha e no body x-www-form-urlencoded username:teste, password:teste, grant_type:password, isso deve lhe dar um token
-
-- - JDK 11
+Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/api/auth/login, nessa requisição, você deverá passar {"login":"teste", "senha":"teste"}isso deve lhe dar um token, este token deverá ser repassado nas requisições posteriores (Authorization: Bearer <SEU_TOKEN>)
 
 - _Este projeto está sendo feito para fins acadêmicos para a disciplina de Projeto e Desenvolvimento de Software, no curso Bacharelado Intedisciplinar em Ciência e Tec._
