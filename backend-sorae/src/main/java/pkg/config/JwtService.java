@@ -7,8 +7,11 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -16,6 +19,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import pkg.models.Usuario;
+import pkg.services.UsuarioService;
 
 @Service
 public class JwtService {
@@ -25,6 +29,9 @@ public class JwtService {
 
     @Value("${spring.jwt.chave}")
     private String chaveAssinatura;
+    
+    @Autowired
+    private UsuarioService usuarioService;
 
     public String gerarToken(Usuario usuario) {
         long exp = Long.valueOf(expiracao);
@@ -35,7 +42,15 @@ public class JwtService {
         Date data = Date.from(instant);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put("Nome", usuario.getNome());
+        
+        Optional<Usuario> buscarUsuarioCompleto = usuarioService.buscarUsuarioCompleto(usuario.getLogin());
+        if (buscarUsuarioCompleto.isPresent()) {
+        	usuario.setPerfis(buscarUsuarioCompleto.get().getPerfis());
+        }
+        
+        
+        claims.put("Login", usuario.getLogin());
+        claims.put("Perfis", usuario.getPerfis());
 
 
         return Jwts.builder()

@@ -1,6 +1,7 @@
 package pkg.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -24,12 +25,18 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    
+    
+    public Optional<Usuario> buscarUsuarioCompleto(String login) {
+    	return usuarioRepository.findByLogin(login);
+    }
 
 
     public UserDetails autenticar(Usuario usuario) {
         UserDetails u = loadUserByUsername(usuario.getLogin());
          boolean senhasOk = passwordEncoder.matches(usuario.getSenha(), u.getPassword());
         if(senhasOk){
+        	
             return u;
         }
 

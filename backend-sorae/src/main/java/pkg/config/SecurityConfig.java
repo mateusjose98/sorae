@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }*/
     
-    public String[] PUBLIC = { "/api/auth/login", "/h2-console/**", "/api/public/**" };
+    public String[] PUBLIC = { "/api/auth/**", "/h2-console/**", "/api/public/**" };
     public String[] ADMIN = { "/atividades/**" };
 
     // CONFIGURAÇÕES DE AUTORIZAÇÃO (2)
