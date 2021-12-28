@@ -1,71 +1,102 @@
 package pkg.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
-import pkg.config.JwtService;
-import pkg.models.Credenciais;
-import pkg.models.Perfil;
-import pkg.models.Token;
-import pkg.models.Usuario;
-import pkg.repositories.PerfilRepository;
+import pkg.entities.AuthResponse;
+import pkg.entities.LoginRequest;
+import pkg.entities.Usuario;
+import pkg.services.JwtTokenService;
+import pkg.services.LoginService;
 import pkg.services.UsuarioService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/auth")
+@CrossOrigin("*")
 public class LoginController {
 
 	@Autowired
-	private UsuarioService usuarioService;
-
-	@Autowired
-	private PerfilRepository roleRepository;
-
-	@Autowired
-	private JwtService jwtService;
+	private LoginService loginService;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private JwtTokenService jwtTokenService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
-	@PostMapping(value = "/cadastrar-usuario")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario salvar(@RequestBody Usuario usuario) {
-		// TODO validar a nulidade da senha
-		List<Perfil> r = roleRepository.findAllById(usuario.getPerfis().stream()
-				.map(p -> p.getId())
-				.collect(Collectors.toList()));
+	@PostMapping("/signin")
+	@ResponseBody
+	public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
+		String token = loginService.login(loginRequest.getUsername(), loginRequest.getPassword());
 		
-		usuario.setPerfis(r);
-		usuario.setSenha(passwordEncoder.encode(usuario.getSenha())); // CRIPTOGRAFAR SENHA
-		return usuarioService.salvar(usuario);
-
+		HttpHeaders headers = new HttpHeaders();
+		List<String> headerlist = new ArrayList<>();
+		List<String> exposeList = new ArrayList<>();
+		headerlist.add("Content-Type");
+		headerlist.add("Accept");
+		headerlist.add("X-Requested-With");
+		headerlist.add("Authorization");
+		headers.setAccessControlAllowHeaders(headerlist);
+		exposeList.add("Authorization");
+		headers.setAccessControlExposeHeaders(exposeList);
+		headers.set("Authorization", token);
+		Usuario usuario = usuarioService.findByUsername(loginRequest.getUsername());
+		usuario.setPassword("");
+		return new ResponseEntity<AuthResponse>(new AuthResponse(token, usuario), headers, HttpStatus.CREATED);
 	}
 
-	@PostMapping("/auth/login")
-	public Token autenticar(@RequestBody Credenciais cd) {
-
-		try {
-			Usuario usuario = new Usuario();
-			usuario.setLogin(cd.getLogin());
-			usuario.setSenha(cd.getSenha());
-			usuarioService.autenticar(usuario);
-			String token = jwtService.gerarToken(usuario);
-			return new Token(usuario.getLogin(), token);
-
-		} catch (RuntimeException e) {
-			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
+	@PostMapping("/signout")
+	@ResponseBody
+	public ResponseEntity<AuthResponse> logout(@RequestHeader(value = "Authorization") String token) {
+		HttpHeaders headers = new HttpHeaders();
+		if (loginService.logout(token)) {
+			headers.remove("Authorization");
+			return new ResponseEntity<AuthResponse>(new AuthResponse("logged out", null), headers, HttpStatus.CREATED);
 		}
-
+		return new ResponseEntity<AuthResponse>(new AuthResponse("Logout Failed", null), headers, HttpStatus.NOT_MODIFIED);
 	}
 
+	/**
+	 *
+	 * @param token
+	 * @return boolean. if request reach here it means it is a valid token.
+	 */
+	@PostMapping("/valid/token")
+	@ResponseBody
+	public Boolean isValidToken(@RequestHeader(value = "Authorization") String token) {
+		return true;
+	}
+
+	@PostMapping("/signin/token")
+	@ResponseBody
+	public ResponseEntity<AuthResponse> createNewToken(@RequestHeader(value = "Authorization") String token) {
+		String newToken = loginService.createNewToken(token);
+		
+		HttpHeaders headers = new HttpHeaders();
+		List<String> headerList = new ArrayList<>();
+		List<String> exposeList = new ArrayList<>();
+		headerList.add("Content-Type");
+		headerList.add("Accept");
+		headerList.add("X-Requested-With");
+		headerList.add("Authorization");
+		headers.setAccessControlAllowHeaders(headerList);
+		exposeList.add("Authorization");
+		headers.setAccessControlExposeHeaders(exposeList);
+		headers.set("Authorization", newToken);
+		Usuario usuario = usuarioService.findByUsername(jwtTokenService.getUsername(newToken));
+		usuario.setPassword("");
+		return new ResponseEntity<AuthResponse>(new AuthResponse(newToken, usuario), headers, HttpStatus.CREATED);
+	}
 }

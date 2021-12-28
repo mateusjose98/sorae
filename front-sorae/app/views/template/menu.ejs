@@ -1,0 +1,214 @@
+<!-- Sidebar -->
+
+<style>
+	:root {
+		--font-color: white;
+	}
+</style>
+
+
+<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" style="background:#0E9AD8" id="accordionSidebar">
+
+	<!-- Sidebar - Brand -->
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+		<div class="sidebar-brand-icon"><br><br><br>
+			<img src="<%= process.env.SERVER_PREFIX %>/img/nome-logo.png" width="100%" />
+		</div>
+	</a>
+	<!-- Divider -->
+	<hr class="sidebar-divider my-0">
+
+	<!-- Nav Item - Dashboard -->
+	<!-- <li class="nav-item active">
+		<a class="nav-link" href="#">
+			<i style="color:var(--font-color); margin-top: 25%" class="fas fa-home"></i>
+			<span style="color:var(--font-color)">Dashboard</span></a>
+	</li> -->
+	<br /><br />
+
+	<!-- Divider -->
+	<hr class="sidebar-divider">
+
+	<% if(informacoes.niveis !=null && informacoes.niveis[0] !=='CONSULTA' ) {%>
+		<!-- Heading -->
+		<div class="sidebar-heading" style="color:var(--font-color);">
+			MENU
+		</div>
+		<% } %>
+			<!-- <% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+				<li class="nav-item">
+					<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/usuario/list">
+						<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+						<span style="color:var(--font-color);"> Gerenciar usuários</span>
+					</a>
+				</li>
+				<%}%>
+
+					<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+						<li class="nav-item">
+							<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/estado-civil/list">
+								<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+								<span style="color:var(--font-color);"> Gerenciar estado civil</span>
+							</a>
+						</li>
+						<%}%>
+						
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/poderes/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar poderes</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/tipo-beneficiario/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar tipo de beneficiário</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/orgao/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar orgãos</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/status-funben/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar status funben</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/titulares/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar Titulares</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/dependentes/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar Dependentes</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+							<li class="nav-item">
+								<a class="nav-link"
+									href="<%= process.env.SERVER_PREFIX %>/app/unidade-federativa/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar Unidades Federativas</span>
+								</a>
+							</li>
+						<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+							<li class="nav-item">
+								<a class="nav-link"
+									href="<%= process.env.SERVER_PREFIX %>/app/municipio/list">
+									<i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i>
+									<span style="color:var(--font-color);"> Gerenciar Municipios</span>
+								</a>
+							</li>
+						<%}%>
+
+
+
+	<!-- <% if(informacoes.niveis != null && (informacoes.niveis[0] == 'CREDENCIADA' || informacoes.niveis[0] == 'ADMIN' || informacoes.niveis[0] == 'USUARIO')) {%>
+
+	<li class="nav-item">
+		<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/consulta">
+			<i style="color:var(--font-color);" class="fas fa-users fa-2x"></i>
+			<span style="color:var(--font-color);"> Consultar Titulares</span>
+		</a>
+		<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/consultaD">
+			<i style="color:var(--font-color);" class="fas fa-users fa-2x"></i>
+			<span style="color:var(--font-color);"> Consultar Dependentes</span>
+		</a>
+	</li> -->
+			<%}%>
+
+				<% if(informacoes.niveis !=null && informacoes.niveis[0]=='USUARIO' ) {%>
+
+					<li class="nav-item">
+						<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/upload">
+
+							<!-- <i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i> -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+								class="bi bi-upload" viewBox="0 0 16 16">
+								<path
+									d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+								<path
+									d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+							</svg>
+							<span style="color:var(--font-color);">Upload CSV -
+								Dependentes</span>
+						</a>
+					</li>
+					<%}%>
+						<% if(informacoes.niveis !=null && informacoes.niveis[0]=='USUARIO' ) {%>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<%= process.env.SERVER_PREFIX %>/app/uploadT">
+
+									<!-- <i style="color:var(--font-color);" class="fas fa-user-plus fa-2x"></i> -->
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+										class="bi bi-upload" viewBox="0 0 16 16">
+										<path
+											d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+										<path
+											d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+									</svg>
+									<span style="color:var(--font-color);">Upload CSV -
+										Titulares</span>
+								</a>
+							</li>
+							<%}%>
+
+								<!-- Nav Item - Pages Collapse Menu -->
+								<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ADMIN' ) {%>
+									<li class="nav-item">
+										<a class="nav-link collapsed" href="#" data-toggle="collapse"
+											data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+											<i style="color:var(--font-color);" style="color: #755C1D"
+												class="fas fa-plus-circle fa-2x"></i>
+											<span style="color:var(--font-color);">Cadastro</span>
+										</a>
+										<div id="collapse5" class="collapse" aria-labelledby="heading5"
+											data-parent="#accordionSidebar">
+											<div class="bg-white py-2 collapse-inner rounded">
+										
+												
+												<a style="color: #0E9AD8;" class="collapse-item"
+													href="<%= process.env.SERVER_PREFIX %>/app/usuario/list">Usuários</a>
+											</div>
+										</div>
+									</li>
+									<%}%>
+
+										<!-- Divider -->
+										<hr class="sidebar-divider d-none d-md-block">
+
+										<!-- Sidebar Toggler (Sidebar) -->
+										<div class="text-center d-none d-md-inline">
+											<button class="rounded-circle border-0" id="sidebarToggle"></button>
+										</div>
+
+</ul>
+<!-- End of Sidebar -->

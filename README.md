@@ -48,6 +48,11 @@
 
 ### Como testar o projeto?
 
-Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/api/auth/login, nessa requisição, você deverá passar {"login":"teste", "senha":"teste"}isso deve lhe dar um token, este token deverá ser repassado nas requisições posteriores (Authorization: Bearer <SEU_TOKEN>)
+Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/auth/signin, nessa requisição, você deverá passar
+{
+"username" : "admin",
+"password": "admin"
+}
+isso deve lhe dar um token, este token deverá ser repassado nas requisições posteriores (Authorization: Bearer <SEU_TOKEN>)
 
 - _Este projeto está sendo feito para fins acadêmicos para a disciplina de Projeto e Desenvolvimento de Software, no curso Bacharelado Intedisciplinar em Ciência e Tec._

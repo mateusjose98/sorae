@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import pkg.models.Professor;
-import pkg.services.ProfessorService;
+import pkg.entities.Professor;
+import pkg.services.impl.ProfessorService;
 
 @RestController
 @RequestMapping("/professor")
