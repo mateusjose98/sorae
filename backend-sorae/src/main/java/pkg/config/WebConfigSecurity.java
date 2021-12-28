@@ -40,12 +40,12 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 
 		// No session will be created or used by spring security
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+		 http.headers().frameOptions().disable();
 		// Entry points
 		http.authorizeRequests()
 				.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security",
 						"/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/ui", "/swagger-ui.html",
-						"/auth/**")
+						"/auth/**", "/h2-console/**")
 				.permitAll()
 				// TODO configurar as permissoes para rotas
 

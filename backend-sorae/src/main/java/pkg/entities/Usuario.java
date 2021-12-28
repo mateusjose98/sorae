@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,12 +22,11 @@ import javax.validation.constraints.NotNull;
 import pkg.enums.NivelEnum;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario") @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seq_usuario")
-	@SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario",  allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty(message = "*Campo 'Nome', obrigatório.")
 	private String nome;

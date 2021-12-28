@@ -1,6 +1,9 @@
 package pkg.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity 
 public class Professor extends Usuario{
@@ -11,6 +14,10 @@ public class Professor extends Usuario{
 	private String areaDeAtuacao;
 	private Boolean coordenador;
 	private String ocupacao;
+	
+	@ManyToMany(mappedBy = "professores")
+	private List<Turma> turmas;
+	
 	public String getEmail() {
 		return email;
 	}
