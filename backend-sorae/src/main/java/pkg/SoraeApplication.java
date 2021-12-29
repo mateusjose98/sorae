@@ -46,10 +46,6 @@ public class SoraeApplication {
 			usuario.setUsername("admin");
 			usuario.setPassword(passwordEncoder.encode("admin"));
 			usuario.setEmail("email@email.com");
-			usuario.setAtivo(true);
-			usuario.setBloqueado(false);
-			usuario.setExpirado(false);
-			usuario.setHabilitado(true);
 			usuario.setNiveis(niveis);
 
 			repository.save(usuario);

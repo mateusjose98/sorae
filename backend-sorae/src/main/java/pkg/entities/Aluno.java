@@ -6,17 +6,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-
 
 @EqualsAndHashCode(callSuper=false)
 @Entity
 public class Aluno extends Usuario{
-
-
-
-    private Long matricula;
+	
+	private Long matricula;
 
     private String nome;
 

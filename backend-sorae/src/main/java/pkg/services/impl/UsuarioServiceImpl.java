@@ -66,8 +66,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 			throw new CustomException("ID da Usuário não informado.", HttpStatus.BAD_REQUEST);
 		if (!usuarioRepository.existsById(usuario.getId()))
 			throw new CustomException("Usuario não encontrado.", HttpStatus.BAD_REQUEST);
-		if (usuario.getImgCapa() == null)
-			usuario.setImgCapa(usuarioRepository.findById(usuario.getId()).get().getImgCapa());
 		if (usuario.getPassword() == null) {
 			usuario.setPassword(usuarioRepository.findById(usuario.getId()).get().getPassword());
 		}else {

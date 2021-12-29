@@ -37,14 +37,12 @@ public class Usuario {
 	@NotEmpty(message = "*Campo 'Password', obrigatório.")
 	private String password;
 	
-	@Column(columnDefinition = "text")
-	private String imgCapa;
 	
-	//Mesmo que status
-	private boolean ativo = true;
-	private boolean habilitado = true;
-	private boolean expirado = false;
-	private boolean bloqueado = false;
+//	//Mesmo que status
+//	private boolean ativo = true;
+//	private boolean habilitado = true;
+//	private boolean expirado = false;
+//	private boolean bloqueado = false;
 	@ElementCollection
 	@JoinTable(name = "nivel_usuario")
 	@Enumerated(EnumType.STRING)
@@ -107,37 +105,6 @@ public class Usuario {
 		this.newPassword = newPassword;
 	}
 
-	public boolean getAtivo() {
-		return ativo;
-	}
-	
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-	
-	public boolean isHabilitado() {
-		return habilitado;
-	}
-	
-	public void setHabilitado(boolean habilitado) {
-		this.habilitado = habilitado;
-	}
-	
-	public boolean isExpirado() {
-		return expirado;
-	}
-	public void setExpirado(boolean expirado) {
-		this.expirado = expirado;
-	}
-	
-	public boolean isBloqueado() {
-		return bloqueado;
-	}
-	
-	public void setBloqueado(boolean bloqueado) {
-		this.bloqueado = bloqueado;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -170,13 +137,6 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 	
-	public String getImgCapa() {
-		return imgCapa;
-	}
-
-	public void setImgCapa(String imgCapa) {
-		this.imgCapa = imgCapa;
-	}
 	
 	public String getNewPassword() {
 		return newPassword;

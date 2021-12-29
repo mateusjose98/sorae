@@ -3,7 +3,7 @@ const request = require('request');
 const base64Img = require('base64-img');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const rota = require('path').basename(__filename, '.js');
+const rota = require('path').basename(__filename, '.js'); // usuario
 const fs = require('fs');
 var multer = require('multer');
 var upload = multer();
@@ -58,18 +58,17 @@ module.exports = async function (app) {
                 if (validaRequisicao(response.statusCode, req, res)) {
                     lista = [];
                     for (var i = 0; i < Object.keys(body.data).length; i++) {
-                        const finallista = {
+                        const usuario = {
                             id: body.data[i].id,
                             nome: body.data[i].nome,
                             username: body.data[i].username,
                             niveis: body.data[i].niveis,
-                            ativo: body.data[i].ativo,
-                            telefone: body.data[i].fone,
-                            unidade: body.data[i].unidade,
-                            empresa: body.data[i].empresa
-
+                            ativo: true || body.data[i].ativo,
+                            telefone: body.data[i].fone
+                          
+           
                         };
-                        lista.push(finallista);
+                        lista.push(usuario);
                     }
                     res.format({
                         html: function () {
