@@ -2,5 +2,5 @@ package pkg.enums;
 
 public enum NivelEnum {
 	
-	ADMIN, USUARIO;
+	ADMIN, USUARIO, ALUNO, PROFESSOR;
 }

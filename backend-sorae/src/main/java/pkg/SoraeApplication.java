@@ -1,6 +1,7 @@
 package pkg;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import pkg.entities.Aluno;
+import pkg.entities.Professor;
 import pkg.entities.Usuario;
 import pkg.enums.NivelEnum;
 import pkg.repositories.UsuarioRepository;
@@ -47,8 +50,41 @@ public class SoraeApplication {
 			usuario.setPassword(passwordEncoder.encode("admin"));
 			usuario.setEmail("email@email.com");
 			usuario.setNiveis(niveis);
+			usuario.setTipo("PE");
+			
+			List<NivelEnum> niveisAluno = new ArrayList<>();
+			niveisAluno.add(NivelEnum.ALUNO);
 
-			repository.save(usuario);
+			Aluno aluno = new Aluno();
+			aluno.setNome("Fernanda Batalha");
+			aluno.setUsername("aluno");
+			aluno.setPassword(passwordEncoder.encode("aluno"));
+			aluno.setEmail("aluno@email.com");
+			aluno.setNiveis(niveisAluno);
+			aluno.setTipo("AL");
+			aluno.setMatricula("20201923120");
+			aluno.setAtivo(true);
+			aluno.setNomeResponsavel("Raíssa da Costa");
+			aluno.setTelefone("9899882222");
+			
+			
+			
+			
+			
+			List<NivelEnum> niveisProfessor = new ArrayList<>();
+			niveisProfessor.add(NivelEnum.PROFESSOR);
+
+			Professor professor = new Professor();
+			professor.setNome("Professor Pardal");
+			professor.setUsername("professor");
+			professor.setPassword(passwordEncoder.encode("professor"));
+			professor.setEmail("professor@email.com");
+			professor.setNiveis(niveisProfessor);
+			professor.setTipo("PR");
+			professor.setAreaDeAtuacao("EXATAS");
+			professor.setCoordenador(false);
+
+			repository.saveAll(Arrays.asList(usuario, professor, aluno));
 		}
 	}
 }

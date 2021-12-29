@@ -3,6 +3,9 @@ package pkg.entities;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -22,7 +24,8 @@ import javax.validation.constraints.NotNull;
 import pkg.enums.NivelEnum;
 
 @Entity
-@Table(name = "usuario") @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "usuario")@Inheritance(strategy = InheritanceType.SINGLE_TABLE) @DiscriminatorColumn(name = "tipo", length = 2, 
+discriminatorType = DiscriminatorType.STRING) @DiscriminatorValue("US")
 public class Usuario {
 
 	@Id
@@ -36,6 +39,9 @@ public class Usuario {
 	
 	@NotEmpty(message = "*Campo 'Password', obrigatório.")
 	private String password;
+	
+	 @Column(insertable=false, updatable=false)
+	    private String tipo;
 	
 	
 //	//Mesmo que status
@@ -57,9 +63,9 @@ public class Usuario {
 	
 	private String newPassword;
 	
-	private String empresa;
+
 	
-	private String unidade;
+
 	
 	public Long getId() {
 		return id;
@@ -85,22 +91,6 @@ public class Usuario {
 		this.password = password;
 	}
 	
-	public String getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
-	}
-
-	public String getUnidade() {
-		return unidade;
-	}
-
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
-	}
-
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
@@ -140,6 +130,14 @@ public class Usuario {
 	
 	public String getNewPassword() {
 		return newPassword;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override

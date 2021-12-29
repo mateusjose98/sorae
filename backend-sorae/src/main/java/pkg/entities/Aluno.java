@@ -3,17 +3,15 @@ package pkg.entities;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-
-@Entity @Data
+@Entity @DiscriminatorValue("AL")
 public class Aluno extends Usuario{
 	
-	private Long matricula;
+	private String matricula;
 
 
     private String nomeResponsavel;
@@ -27,6 +25,55 @@ public class Aluno extends Usuario{
     
     @OneToMany(mappedBy = "aluno")
     private List<Atividade> atividades;
+
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getNomeResponsavel() {
+		return nomeResponsavel;
+	}
+
+	public void setNomeResponsavel(String nomeResponsavel) {
+		this.nomeResponsavel = nomeResponsavel;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public List<Frequencia> getFrequencias() {
+		return frequencias;
+	}
+
+	public void setFrequencias(List<Frequencia> frequencias) {
+		this.frequencias = frequencias;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
+	}
     
     
     
