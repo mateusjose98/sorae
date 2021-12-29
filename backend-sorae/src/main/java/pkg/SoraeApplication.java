@@ -66,6 +66,7 @@ public class SoraeApplication {
 			aluno.setAtivo(true);
 			aluno.setNomeResponsavel("Raíssa da Costa");
 			aluno.setTelefone("9899882222");
+			aluno.setSerie("9 ANO");
 			
 			
 			

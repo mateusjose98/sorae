@@ -20,6 +20,8 @@ public class Aluno extends Usuario{
 
     private Boolean ativo = true;
     
+    private String serie;
+    
     @OneToMany(mappedBy = "aluno")
     private List<Frequencia> frequencias;
     
@@ -73,6 +75,14 @@ public class Aluno extends Usuario{
 
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = atividades;
+	}
+
+	public String getSerie() {
+		return serie;
+	}
+
+	public void setSerie(String serie) {
+		this.serie = serie;
 	}
     
     
