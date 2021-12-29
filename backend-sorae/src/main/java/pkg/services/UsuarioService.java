@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import pkg.dtos.UsuarioDTO;
 import pkg.entities.Usuario;
 
 public interface UsuarioService {
 
-	Usuario create(Usuario usuario);
+	Usuario create(UsuarioDTO usuario);
     
     Usuario update(Usuario usuario);
     

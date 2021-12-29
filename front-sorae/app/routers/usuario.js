@@ -171,15 +171,17 @@ module.exports = async function (app) {
                     "username": req.body.username,
                     "password": req.body.password,
                     "niveis": niveis,
-                    "imgCapa": foto,
                     "ativo": req.body.ativo,
                     "habilitado": true,
                     "expirado": false,
                     "bloqueado": false,
                     "telefone": req.body.fone,
                     "email": req.body.email,
-                    "unidade": req.body.unidade,
-                    "empresa": req.body.empresa
+                    "nomeResponsavel":req.body.nomeresponsavel,
+                    "serie": req.body.serie,
+                    "areaDeAtuacao": req.body.area
+                   
+                   
                 },
             }, function (error, response, body) {
 

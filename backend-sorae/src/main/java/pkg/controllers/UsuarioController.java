@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pkg.dtos.UsuarioDTO;
 import pkg.entities.Usuario;
 import pkg.response.Response;
 import pkg.services.UsuarioService;
@@ -35,7 +36,7 @@ public class UsuarioController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping
-	public ResponseEntity<Response<Usuario>> create(@RequestBody Usuario usuario, BindingResult result,
+	public ResponseEntity<Response<Usuario>> create(@RequestBody UsuarioDTO usuario, BindingResult result,
 			@RequestHeader(name = "Authorization", required = false) String authorization) {
 		Response<Usuario> response = new Response<>();
 		response.setData(usuarioService.create(usuario));

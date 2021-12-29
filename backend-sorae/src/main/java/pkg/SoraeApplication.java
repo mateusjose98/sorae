@@ -95,7 +95,6 @@ public class SoraeApplication {
 			professor.setNiveis(niveisProfessor);
 			professor.setTipo("PR");
 			professor.setAreaDeAtuacao("EXATAS");
-			professor.setCoordenador(false);
 
 
 			repository.saveAll(Arrays.asList(usuario,aluno, professor ));

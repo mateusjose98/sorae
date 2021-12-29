@@ -10,9 +10,8 @@
 - [RF2] - O sistema permite crud de Professor;
 - [RF3] - O sistema permite crud de Disciplina;
 - [RF4] - O sistema permite crud de Atividades;
-- [RF5] - O sistema deve possuir área de autenticação para Aluno, Professor e Coordenação;
-- [RF5] - A Coordenação faz as atrbuições de disciplinas a professores;
-- [RF6] - A Coordenação faz as matrículas de novos alunos;
+- [RF5] - O sistema deve possuir área de autenticação para Aluno, Professor;
+- [RF6] - A Coordenação faz as atrbuições de disciplinas a professores;
 - [RF7] - O Professor poderá fazer o cadastro do planejamento da disciplina que ministrará;
 - [RF8] - A Coordenação faz o cadastro das disciplinas por série;
 - [RF9] - O Professor poderá realizar chamadas e o sistema armazenará as frequências dos alunos;

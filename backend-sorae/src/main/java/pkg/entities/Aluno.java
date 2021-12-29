@@ -30,7 +30,7 @@ public class Aluno extends Usuario{
     @OneToMany(mappedBy = "aluno")
     private List<Frequencia> frequencias;
     
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private List<AlunoAtividade> alunoAtividades;
 
