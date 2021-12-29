@@ -9,15 +9,12 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper=false)
-@Entity
+
+@Entity @Data
 public class Aluno extends Usuario{
 	
 	private Long matricula;
 
-    private String nome;
-
-    private String email;
 
     private String nomeResponsavel;
 
@@ -30,6 +27,10 @@ public class Aluno extends Usuario{
     
     @OneToMany(mappedBy = "aluno")
     private List<Atividade> atividades;
+    
+    
+    
+    
 
 
 
