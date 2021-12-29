@@ -24,7 +24,7 @@ import pkg.response.Response;
 import pkg.services.UsuarioService;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("/usuario")
 @CrossOrigin(origins = "*")
 public class UsuarioController {
 

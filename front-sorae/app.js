@@ -30,7 +30,7 @@ app.get(process.env.SERVER_PREFIX, (req, res) => {
     } else {
         res.format({
             html: function () {
-                res.render('template/index',{informacoes: req.session.usuario});
+                res.render('template/index',{informacoes: req.session.usuario, teste: 'amarelo'});
             }
         });
     }

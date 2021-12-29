@@ -45,6 +45,10 @@ module.exports = async function(app) {
                 "username": req.body.email,
             },
         }, function(error, response, body) {
+           if (response == null) {
+                res.redirect( process.env.SERVER_PREFIX + '/');
+                return false;
+           }
             if (response.statusCode != 201) {
                 req.flash("danger", body.accessToken);
                 res.redirect( process.env.SERVER_PREFIX + '/');

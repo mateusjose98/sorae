@@ -1,7 +1,10 @@
 package pkg.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,14 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pkg.entities.Aluno;
+import pkg.entities.projections.TurmaResumoDTO;
 import pkg.services.impl.AlunoService;
+import pkg.services.impl.TurmaService;
 
 @RestController
 @RequestMapping("/alunos")
+@CrossOrigin(origins = "*")
 public class AlunoController {
 
     @Autowired
     private AlunoService alunoService;
+    
+    @Autowired
+    private TurmaService turmaService;
+    
+    
+    @GetMapping("/{idAluno}/disciplinas")
+    public List<TurmaResumoDTO> buscarDisciplinasDoAluno(@PathVariable("idAluno") Long idAluno){
+    	return turmaService.buscarDisciplinasDoAluno(idAluno);
+    }
 
 
     @PostMapping("/cadastro") @ResponseStatus(HttpStatus.CREATED)

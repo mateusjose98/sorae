@@ -71,9 +71,15 @@
 												</div> -->
 										</div>
 										<!-- Card Body -->
+									
+					
+									<input style="display:none;" type="text" class="form-control hidden" id="id-aluno" name="id-aluno" value="<%= informacoes.id %>">
+					
+								
+									
 										<div class="card-body">
 												<div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-												<table class="table">
+												<table class="table" id="tabela-disciplinas-aluno">
 													<thead>
 														<tr>
 															<th>Código</th>
@@ -83,24 +89,8 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<td>332</td>
-															<td>Matemática</td>
-															<td>201-A</td>
-															<td>10h20</td>
-														</tr>
-														<td>332</td>
-														<td>Matemática</td>
-														<td>201-A</td>
-														<td>10h20</td>
-													</tr>
-													<td>332</td>
-													<td>Matemática</td>
-													<td>201-A</td>
-													<td>10h20</td>
-												</tr>
 													
-														
+												
 													</tbody>
 												</table>
 												</div>
@@ -199,6 +189,43 @@
 
 		<!-- Custom scripts for all pages-->
 		<script src="<%= process.env.SERVER_PREFIX %>/js/sb-admin-2.min.js"></script>
+
+		<script> 
+
+	$(document).ready(function(){
+  	let idAluno = $('#id-aluno').val();
+		$.ajax({
+    url: `http://localhost:8080/alunos/${idAluno}/disciplinas`,
+    async: false,
+    type: 'get',
+    dataType: 'json',
+    success: function(data){
+			let html = '';
+        $.each(data, function(k, v){
+						console.log(k)
+					 	console.log(v)
+						html += `
+													<tr>
+															<td>${v.codigo}</td>
+															<td >${v.nome}</td>
+															<td>${v.sala}</td>
+															<td>${v.horario}</td>
+													 </tr>
+										
+												`; 
+
+        });
+				$('#tabela-disciplinas-aluno tbody').html(html);  
+    },
+    error: function(error){
+        console.log(error)
+    }
+});
+
+	});
+		
+		
+		</script>
 
 	</body>
 

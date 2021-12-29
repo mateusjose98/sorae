@@ -34,7 +34,48 @@ module.exports = async function (app) {
         next();
     });
     
+    app.get(process.env.SERVER_PREFIX + '/alunos/:idAluno/disciplinas', function(req, res) {
+        if (!req.session.token) {
+            res.redirect( process.env.SERVER_PREFIX + '/app/login');
+        } else if (req.session.usuario.nivel != 'ADMIN') {
+            req.flash('danger', 'Acesso restrito! Somente usuários de nível ADMINISTRADOR podem acessar esta página');
+            res.redirect( process.env.SERVER_PREFIX + '/');
+        } else {
 
+            teste = request({
+                url: process.env.API_HOST + req.params.idAluno ,
+                method: "GET",
+                json: true,
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": req.session.token
+                },
+            }, function (error, response, body) {
+               
+                if (validaRequisicao(response.statusCode, req, res)) {
+                    console.log(body)
+                    lista = [];
+                    for (var i = 0; i < Object.keys(body).length; i++) {
+                        const usuario = {
+                            // nome: body.data[i].id,
+                       
+                        };
+                        lista.push(usuario);
+                    }
+                    res.format({
+                        html: function () {
+                            res.render(rota + '/List', { itens: lista, page: rota, informacoes: req.session.usuario });
+
+                        }
+                    });
+                    return lista;
+                }
+
+
+            });
+
+        }
+    })
 
     // Rota para exibição da View Listar
     app.get( process.env.SERVER_PREFIX + '/app/' + rota + '/list', function (req, res) {

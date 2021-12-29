@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity  @DiscriminatorValue("PR")
 public class Professor extends Usuario{
@@ -15,7 +18,8 @@ public class Professor extends Usuario{
 	private Boolean coordenador;
 	private String ocupacao;
 	
-	@ManyToMany(mappedBy = "professores")
+	@JsonManagedReference
+	@ManyToMany(mappedBy = "professores", fetch = FetchType.LAZY)
 	private List<Turma> turmas;
 
 	public String getTelefone() {

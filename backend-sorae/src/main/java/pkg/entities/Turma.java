@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Entity
@@ -24,10 +26,16 @@ public class Turma {
 	
 	private Integer ano;
 	
-	@ManyToMany
+	@ManyToMany @JsonBackReference
 	@JoinTable(name = "turma_professor", 
 	   joinColumns = @JoinColumn(name = "turma_id"), 
 	   inverseJoinColumns = @JoinColumn(name = "professor_id"))
 	private List<Professor> professores;
+	
+	 @ManyToMany
+	 @JoinTable(name = "turma_aluno", 
+	   joinColumns = @JoinColumn(name = "turma_id"), 
+	   inverseJoinColumns = @JoinColumn(name = "aluno_id"))
+	 private List<Aluno> alunos;
 	
 }

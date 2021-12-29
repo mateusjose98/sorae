@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -27,6 +30,10 @@ public class Aluno extends Usuario{
     
     @OneToMany(mappedBy = "aluno")
     private List<Atividade> atividades;
+    
+    @ManyToMany(mappedBy = "alunos")
+    private List<Turma> turmas;
+    
 
 
 	public String getMatricula() {

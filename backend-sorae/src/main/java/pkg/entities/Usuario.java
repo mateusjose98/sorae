@@ -55,16 +55,12 @@ public class Usuario {
 	@NotNull(message = "Campo 'Níveis' obrigatório!")
 	private List<NivelEnum> niveis;
 	
-	
 	@Email
 	private String email;
 	
 	private String telefone;
 	
 	private String newPassword;
-	
-
-	
 
 	
 	public Long getId() {
