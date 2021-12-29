@@ -7,6 +7,6 @@ public interface TurmaResumoDTO {
 	String getCodigo();
 	String getNome();
 	String getSala();
-	LocalDateTime getHorario();
+	String getHorario();
 
 }

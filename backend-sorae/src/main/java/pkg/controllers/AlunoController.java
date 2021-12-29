@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pkg.entities.Aluno;
+import pkg.entities.projections.AtividadeResumoDTO;
 import pkg.entities.projections.TurmaResumoDTO;
 import pkg.services.impl.AlunoService;
 import pkg.services.impl.TurmaService;
@@ -31,6 +32,13 @@ public class AlunoController {
     
     @Autowired
     private TurmaService turmaService;
+    
+    
+    
+    @GetMapping("/{idAluno}/atividades")
+    public List<AtividadeResumoDTO> buscarAtividadesDaTurmaDoAluno(@PathVariable("idAluno") Long idAluno){
+    	return turmaService.buscarAtividadesDaTurmaDoAluno(idAluno);
+    }
     
     
     @GetMapping("/{idAluno}/disciplinas")
