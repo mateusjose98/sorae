@@ -105,7 +105,8 @@ module.exports = async function (app) {
                             username: body.data[i].username,
                             niveis: body.data[i].niveis,
                             ativo: true || body.data[i].ativo,
-                            telefone: body.data[i].fone
+                            telefone: body.data[i].telefone,
+                            matricula: body.data[i].matricula 
                           
            
                         };
