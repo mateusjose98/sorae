@@ -3,13 +3,13 @@ package pkg.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -27,18 +27,17 @@ public class Aluno extends Usuario{
     
     private String serie;
     
-    @OneToMany(mappedBy = "aluno")
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
     private List<Frequencia> frequencias;
     
     @JsonManagedReference
-    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<AlunoAtividade> alunoAtividades;
 
     @JsonManagedReference
     @ManyToMany(mappedBy = "alunos", fetch = FetchType.LAZY)
     private List<Turma> turmas;
     
-
 
 	public List<AlunoAtividade> getAlunoAtividades() {
 		return alunoAtividades;

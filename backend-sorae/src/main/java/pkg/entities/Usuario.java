@@ -45,7 +45,7 @@ public class Usuario {
 	
 	
 //	//Mesmo que status
-//	private boolean ativo = true;
+	private boolean ativo;
 //	private boolean habilitado = true;
 //	private boolean expirado = false;
 //	private boolean bloqueado = false;
@@ -63,6 +63,14 @@ public class Usuario {
 	private String newPassword;
 
 	
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	public Long getId() {
 		return id;
 	}

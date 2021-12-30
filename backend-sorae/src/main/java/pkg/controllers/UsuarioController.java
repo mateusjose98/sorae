@@ -44,7 +44,7 @@ public class UsuarioController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Response<Usuario>> update(@RequestBody Usuario usuario, BindingResult result,
+	public ResponseEntity<Response<Usuario>> update(@RequestBody UsuarioDTO usuario, BindingResult result,
 			@RequestHeader(name = "Authorization", required = false) String authorization) {
 		Response<Usuario> response = new Response<>();
 		response.setData(usuarioService.update(usuario));

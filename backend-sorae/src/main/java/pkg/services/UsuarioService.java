@@ -11,7 +11,7 @@ public interface UsuarioService {
 
 	Usuario create(UsuarioDTO usuario);
     
-    Usuario update(Usuario usuario);
+    Usuario update(UsuarioDTO usuario);
     
     Usuario updatePassword(Usuario usuario);
     

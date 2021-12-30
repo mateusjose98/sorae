@@ -225,7 +225,6 @@ module.exports = async function (app) {
                                 username: body.data.username,
                                 password: body.data.password,
                                 nivel: body.data.niveis[0],
-                                foto: body.data.imgCapa,
                                 page: rota,
                                 ativo: body.data.ativo,
                                 habilitado: body.data.habilitado,
@@ -234,8 +233,11 @@ module.exports = async function (app) {
                                 fone: body.data.telefone,
                                 informacoes: req.session.usuario,
                                 email: body.data.email,
-                                empresa: body.data.empresa,
-                                unidade: body.data.unidade
+                                nomeresponsavel: body.data.nomeResponsavel,
+                                matricula: body.data.matricula,
+                                areaDeAtuacao: body.data.areaDeAtuacao,
+                                serie: body.data.serie
+                               
                                 
                             });
                         }
@@ -329,7 +331,11 @@ module.exports = async function (app) {
                     "expirado": false,
                     "bloqueado": false,
                     "empresa": req.body.empresa,
-                    "unidade": req.body.unidade
+                    "unidade": req.body.unidade,
+                    "nomeresponsavel": req.body.nomeResponsavel,
+                    "matricula": req.body.matricula,
+                    "areaDeAtuacao": req.body.areaDeAtuacao,
+                    "serie": req.body.serie
                 },
             }, function (error, response, body) {
 
@@ -455,12 +461,13 @@ module.exports = async function (app) {
                     "Authorization": req.session.token
                 },
             }, function (error, response, body) {
+                console.log(response)
 
                 if (response.statusCode != 200) {
                     console.log('status' + reponse.statusCode)
                     req.flash("danger", "Item não excluído. " + body.errors);
                 } else {
-                    postLog(req.session.token, "DELETE", rota, req.session.userid);
+                    // postLog(req.session.token, "DELETE", rota, req.session.userid);
                     req.flash("success", "Item excluído com sucesso.");
                 }
 
