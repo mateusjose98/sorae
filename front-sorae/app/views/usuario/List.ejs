@@ -91,7 +91,13 @@
 									<tbody>
 									  <% for (var i = 0; i < itens.length; i++) { %>
 										<tr>
-											<td><%= itens[i].nome %></td>
+											<td><%= itens[i].nome %> 
+												<% if(itens[i].niveis[0] === "ALUNO"){ %>
+													( <%= itens[i].matricula %> )
+												<% } else{ %>  
+													
+											 <% } %>
+											</td>
 									
 											<td><%= itens[i].telefone %></td>
 											<td>

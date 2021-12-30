@@ -23,7 +23,7 @@ public interface UsuarioService {
     
     Page<Usuario> findAll(int page, int size);
     
-    List<Usuario> findAll();
+    List<UsuarioDTO> findAll();
     
     void delete(Long id);
 }

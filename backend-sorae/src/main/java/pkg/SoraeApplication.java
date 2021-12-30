@@ -47,7 +47,8 @@ public class SoraeApplication {
 		};
 	}
 
-	public void iniciarUsuario(UsuarioRepository repository, PasswordEncoder passwordEncoder, 
+	public void iniciarUsuario(UsuarioRepository repository, 
+			PasswordEncoder passwordEncoder, 
 			DisciplinaRepository discRepository, 
 			TurmaRepository turmaRepository, 
 			TurmaDisciplinaRepository turmaDisciplinaRepository,
@@ -257,22 +258,7 @@ public class SoraeApplication {
 					Arrays.asList(a1, a2, a3, a4, a5)
 					);
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+	
 			
 		}
 	}

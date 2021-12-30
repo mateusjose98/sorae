@@ -96,9 +96,9 @@ public class UsuarioController {
 	}
 
 	@GetMapping
-	public ResponseEntity<Response<List<Usuario>>> findAll(
+	public ResponseEntity<Response<List<UsuarioDTO>>> findAll(
 			@RequestHeader(name = "Authorization", required = false) String authorization) {
-		Response<List<Usuario>> response = new Response<>();
+		Response<List<UsuarioDTO>> response = new Response<>();
 		response.setData(usuarioService.findAll());
 		return ResponseEntity.ok(response);
 	}

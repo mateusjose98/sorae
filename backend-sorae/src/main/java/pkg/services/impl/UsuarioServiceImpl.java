@@ -1,5 +1,7 @@
 package pkg.services.impl;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -52,9 +54,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 		
 		if(usuario.getNiveis() != null && usuario.getNiveis().get(0).equals(NivelEnum.ALUNO)) {
 			Aluno aluno = new Aluno();
+			
 			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 			BeanUtils.copyProperties(usuario, aluno);
-			return alunoRepository.save(aluno);
+			aluno = alunoRepository.save(aluno);
+			aluno.setMatricula(LocalDate.now().getYear() + "" + aluno.getId());
+			return aluno;
 
 		}
 		if(usuario.getNiveis() != null && usuario.getNiveis().get(0).equals(NivelEnum.PROFESSOR)) {
@@ -143,8 +148,29 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<Usuario> findAll() {
-		return usuarioRepository.findAll();
+	public List<UsuarioDTO> findAll() {
+		List<Usuario> findAll = usuarioRepository.findAll();
+		
+		List<UsuarioDTO> resultado = new ArrayList<>();
+		
+		for (Usuario u : findAll) {
+//			if (u instanceof Aluno) {
+//				UsuarioDTO aux = new UsuarioDTO();
+//				BeanUtils.copyProperties(u, aux);
+//				resultado.add(aux);
+//			}
+//			if(u instanceof Professor) {
+//				UsuarioDTO aux = new UsuarioDTO();
+//				BeanUtils.copyProperties(u, aux);
+//				resultado.add(aux);
+//			} else {
+				UsuarioDTO aux = new UsuarioDTO();
+				BeanUtils.copyProperties(u, aux);
+				resultado.add(aux);
+//			}
+		}
+		
+		return resultado;
 	}
 
 	@Override
