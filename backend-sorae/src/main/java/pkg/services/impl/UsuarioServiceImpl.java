@@ -76,7 +76,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	@Transactional
-	public Usuario update(Usuario usuario) {
+	public Usuario update(UsuarioDTO dto) {
 		
 		Object usuarioLogadoInContext = SecurityContextHolder.getContext()
     			.getAuthentication()
@@ -90,23 +90,46 @@ public class UsuarioServiceImpl implements UsuarioService{
     	
     	System.out.printf("usuario logado : %s suas atuh : %s", usuarioLogado, stringAuths);
     	
-    	if (!stringAuths.contains("ROLE_ADMIN") && usuario.getId() != usuarioLogado.getId()) {
+    	if (!stringAuths.contains("ROLE_ADMIN") && dto.getId() != usuarioLogado.getId()) {
     		System.out.println("não sou permitido nem como admin nem com id correto");
     		throw new CustomException("Você não possui essa permissão!", HttpStatus.BAD_REQUEST);
     	}
     	
 
-		if (usuario.getId() == null)
+		if (dto.getId() == null)
 			throw new CustomException("ID da Usuário não informado.", HttpStatus.BAD_REQUEST);
-		if (!usuarioRepository.existsById(usuario.getId()))
+		if (!usuarioRepository.existsById(dto.getId()))
 			throw new CustomException("Usuario não encontrado.", HttpStatus.BAD_REQUEST);
-		if (usuario.getPassword() == null) {
-			usuario.setPassword(usuarioRepository.findById(usuario.getId()).get().getPassword());
-		}else {
-			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-		}
+		if (dto.getPassword() == null) {
 			
-		return usuarioRepository.save(usuario);
+			dto.setPassword(usuarioRepository.findById(dto.getId()).get().getPassword());
+		}else {
+			dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+		}
+		
+		if(dto.getNiveis() != null && dto.getNiveis().get(0).equals(NivelEnum.ALUNO)) {
+			Aluno aluno = alunoRepository.findById(dto.getId()).get();
+			BeanUtils.copyProperties(dto, aluno, "tipo", "matricula");
+			aluno = alunoRepository.save(aluno);
+			return aluno;
+
+		}
+		if(dto.getNiveis() != null && dto.getNiveis().get(0).equals(NivelEnum.PROFESSOR)) {
+			
+			Professor professor = professorRepository.findById(dto.getId()).get();
+			BeanUtils.copyProperties(dto, professor, "tipo");
+			professor = professorRepository.save(professor);
+			return professor;
+			
+		} else {
+			Usuario u = usuarioRepository.findById(dto.getId()).get();
+			BeanUtils.copyProperties(dto, u);
+			return usuarioRepository.save(u);
+		}
+		
+		
+			
+		
 	}
 
 	@Override
@@ -181,6 +204,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public void delete(Long id) {
+		Usuario u = usuarioRepository.findById(id).get();
+		u.setAtivo(false);
+		
 		usuarioRepository.deleteById(id);
 	}
 }
