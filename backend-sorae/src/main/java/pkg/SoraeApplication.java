@@ -89,7 +89,7 @@ public class SoraeApplication {
 			niveisProfessor.add(NivelEnum.PROFESSOR);
 
 			Professor professor = new Professor();
-			professor.setNome("Professor Pardal");
+			professor.setNome("Professor professor da Silva");
 			professor.setUsername("professor");
 			professor.setPassword(passwordEncoder.encode("professor"));
 			professor.setEmail("professor@email.com");
