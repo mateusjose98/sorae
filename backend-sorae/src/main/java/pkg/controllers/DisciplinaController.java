@@ -27,18 +27,15 @@ public class DisciplinaController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleta")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarDisciplina(@PathVariable Long id){
-        disciplinaService.acharDisciplina(id).map(disciplina -> {
-            disciplinaService.deletar(disciplina);
-            return Void.TYPE;
-        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public void deletarDisciplina(@RequestBody Disciplina disciplina){
+        disciplinaService.deletar(disciplina);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar")
     @ResponseStatus(HttpStatus.OK)
-    public Disciplina atualizarDisciplina(@PathVariable Disciplina disciplina){
+    public Disciplina atualizarDisciplina(@RequestBody Disciplina disciplina){
         return disciplinaService.salvarDisciplina(disciplina);
     }
 
