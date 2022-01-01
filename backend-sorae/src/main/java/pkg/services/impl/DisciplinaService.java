@@ -13,7 +13,7 @@ import pkg.repositories.TurmaDisciplinaRepository;
 @Service
 public class DisciplinaService {
 
-	@Autowired
+    @Autowired
     private DisciplinaRepository disciplinaRepository;
 	
 	@Autowired
