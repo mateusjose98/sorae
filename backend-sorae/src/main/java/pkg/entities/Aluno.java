@@ -1,12 +1,15 @@
 package pkg.entities;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -34,10 +37,18 @@ public class Aluno extends Usuario{
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<AlunoAtividade> alunoAtividades;
 
-    @JsonManagedReference
-    @ManyToMany(mappedBy = "alunos", fetch = FetchType.LAZY)
-    private List<Turma> turmas;
     
+    @ManyToMany
+	 @JoinTable(name = "turma_aluno", 
+	   joinColumns = @JoinColumn(name = "aluno_id"), 
+	   inverseJoinColumns = @JoinColumn(name = "turma_id"))
+    private List<Turma> turmas = new ArrayList<>();
+    
+   
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 
 	public List<AlunoAtividade> getAlunoAtividades() {
 		return alunoAtividades;
@@ -51,9 +62,6 @@ public class Aluno extends Usuario{
 		return turmas;
 	}
 
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
 
 	public String getMatricula() {
 		return matricula;

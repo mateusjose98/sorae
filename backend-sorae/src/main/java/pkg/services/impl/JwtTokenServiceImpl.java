@@ -49,7 +49,7 @@ public class JwtTokenServiceImpl implements JwtTokenService {
         String token =  Jwts.builder()//
                 .setClaims(claims)//
                 .setIssuedAt(now)//
-//                .setExpiration(validity)//
+                .setExpiration(validity)//
                 .signWith(SignatureAlgorithm.HS256, secretKey)//
                 .compact();
         jwtTokenRepository.save(new JwtToken(token));
@@ -106,7 +106,8 @@ public class JwtTokenServiceImpl implements JwtTokenService {
         //UserDetails userDetails = userDetailsService.loadUserByUsername(getUsername(token));
         //from token take user value. comment below line for changing it taking from data base
         UserDetails userDetails = getUserDetails(token);
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetails, "", 
+        		userDetails.getAuthorities());
     }
 
 	@Override

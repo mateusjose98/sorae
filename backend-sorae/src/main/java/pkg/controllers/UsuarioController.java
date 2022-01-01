@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pkg.dtos.UsuarioDTO;
+import pkg.entities.Aluno;
 import pkg.entities.Usuario;
+import pkg.repositories.AlunoRepository;
 import pkg.response.Response;
 import pkg.services.UsuarioService;
+import pkg.services.impl.AlunoService;
 
 @RestController
 @RequestMapping("/usuario")
@@ -103,11 +106,20 @@ public class UsuarioController {
 		return ResponseEntity.ok(response);
 	}
 
+	@Autowired
+	private AlunoService alunoService;
+	
+    @Autowired
+    private AlunoRepository alunoRepository;
+	
+	
+	
 	@DeleteMapping(value = "{id}")
 	public ResponseEntity<Response<String>> delete(@PathVariable Long id,
 			@RequestHeader(name = "Authorization", required = false) String token) {
 		Response<String> response = new Response<>();
 		try {
+			
 			usuarioService.delete(id);
 		} catch (Exception e) {
 			response.getErrors().add(e.getMessage());

@@ -1,7 +1,5 @@
 package pkg.entities.projections;
 
-import java.time.LocalDateTime;
-
 public interface TurmaResumoDTO {
 	
 	String getCodigo();

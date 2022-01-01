@@ -148,9 +148,12 @@ public class SoraeApplication {
 			
 			t1.setAno(2020);
 			t1.setDescricao("9-ANO-C");
+			
+			// ALUNO NA TURMA
+			aluno.getTurmas().add(t1);
 			t1.setAlunos(Arrays.asList(aluno));
 			t1.setProfessores(Arrays.asList(professor));
-			
+		
 			
 			turmaRepository.save(t1);
 			

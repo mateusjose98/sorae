@@ -1,11 +1,13 @@
 package pkg.services.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pkg.entities.Disciplina;
 import pkg.repositories.DisciplinaRepository;
-
-import java.util.Optional;
+import pkg.repositories.TurmaDisciplinaRepository;
 
 
 @Service
@@ -13,6 +15,9 @@ public class DisciplinaService {
 
 	@Autowired
     private DisciplinaRepository disciplinaRepository;
+	
+	@Autowired
+	private TurmaDisciplinaRepository turmaDisciplinaRepository;
 
     public Disciplina salvarDisciplina(Disciplina disciplina) {
         return disciplinaRepository.save(disciplina);
@@ -23,6 +28,7 @@ public class DisciplinaService {
     }
 
     public void deletar(Disciplina disciplina) {
+    	
         if (disciplina != null){
             disciplinaRepository.delete(disciplina);
         }
