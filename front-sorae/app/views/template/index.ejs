@@ -214,12 +214,12 @@
     success: function(data){
 			let html = '';
         $.each(data, function(k, v){
-						console.log(k)
-					 	console.log(v)
+					
 
 						html += `
-										<div class="card-body">
-											<div class="card bg-light mb-3" style="max-width: 15rem;">
+										<div class="card-body"  >
+											<a class="card-atividade" href='<%= process.env.SERVER_PREFIX %>/atividades/detalhe/${v.codigo}' >
+											<div class="card bg-light mb-3 card-body-atividade" style="max-width: 15rem;box-shadow:  rgba(149, 157, 165, 0.1) 0px 4px 12px;">
 												<div class="card-header">${v.titulo}</div>
 												<div class="card-body">
 													<p class="card-title"><b>Postado em:</b> ${v.dataPostagem}</p>
@@ -227,12 +227,21 @@
 													<p class="card-text">${v.descricao}</p>
 												</div>
 											</div>
+											</a>
 										</div>
 										
 												`; 
 
         });
-				$('#cards-atividades').html(html);  
+				$('#cards-atividades').html(html); 
+			
+				$(".card-body-atividade").mouseenter(function() {
+					
+    			$(this).css("box-shadow", "rgba(0, 0, 0, 0.30) 0px 5px 15px");
+					}).mouseleave(function() {
+     		  $(this).css("box-shadow", " rgba(149, 157, 165, 0.1) 0px 4px 12px");
+});
+
     },
     error: function(error){
         console.log(error)

@@ -3,6 +3,7 @@ package pkg.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class Atividade {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String titulo;
+	@Column(columnDefinition = "TEXT")
 	private String descricao;
 	private LocalDateTime dataPostagem;
 	private LocalDateTime dataEntrega;

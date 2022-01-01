@@ -55,7 +55,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/**")
 					.hasAnyAuthority("ROLE_ADMIN", "ROLE_CONSULTA")
 				.antMatchers(HttpMethod.GET, "/atividades/**")
-					.hasAnyAuthority("ROLE_ADMIN", "ROLE_CONSULTA");
+					.hasAnyAuthority("ROLE_ADMIN", "ROLE_CONSULTA", "ROLE_ALUNO", "ROLE_PROFESSOR");
 
 		// If a user try to access a resource without having enough permissions
 		http.exceptionHandling().accessDeniedPage("/login");

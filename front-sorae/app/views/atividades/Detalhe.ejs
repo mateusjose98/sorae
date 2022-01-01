@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+    
+
+		<title>SORAE | Consulta</title>
+
+		<!-- Custom fonts for this template-->
+		<link href="<%= process.env.SERVER_PREFIX %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+		<link
+			  href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+			  rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		<link href="<%= process.env.SERVER_PREFIX %>/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/umycdhe0c162wr6h1cquccbwox9xp1iu4qiukog6efuupbix/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+	</head>
+
+	<body id="page-top">
+
+		<!-- Page Wrapper -->
+		<div id="wrapper">
+
+			<!-- Menu -->
+			<%- include ../template/menu.ejs %>
+
+			<!-- Content Wrapper -->
+			<div id="content-wrapper" class="d-flex flex-column">
+
+				<!-- Main Content -->
+				<div id="content">
+
+					<!-- Header -->
+					<%- include ../template/topo.ejs %>
+
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
+						
+						<%- messages() %>
+						
+						
+						<!-- Page Heading -->
+						<h1 class="h3 mb-4 text-gray-800"><%= informacoes.nome %> - <%= informacoes.serie %></h1>
+
+							<!-- card -->
+					<div class="row">
+
+						<!-- Area Chart -->
+					
+						<div class="col-xl-12 col-lg-3">
+								<div class="card shadow mb-4 p-3">
+										<!-- Card Header - Dropdown -->
+										<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+												<h6 class="m-0 font-weight-bold text-primary">Atividade: <%= disciplina.titulo %> - <%= disciplina.disciplina %></h6>
+												
+										</div>
+										<!-- Card Body -->
+                    
+					
+									<input style="display:none;" type="text" class="form-control hidden" id="id-aluno" name="id-aluno" value="<%= informacoes.id %>">
+					
+                  <div class="card-body px-3 py-3">
+                   <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> <b> Professor: </b><%= disciplina.nomeProfessor %> </li>
+                    <li class="list-group-item">  <b> Data da postagem: </b> <%= disciplina.dataPostagem %> </li>
+                    <li class="list-group-item">  <b> Data da entrega: </b> <%= disciplina.dataEntrega %> </li>
+                    <li class="list-group-item">  <b> Descrição da atividade: </b> <%= disciplina.descricaoAtividade %> </li>
+                    
+                    <div> 
+                    <form class="form" action=""></form>
+                      <div class="form-group">
+                        <br><br> <b> Responder atividade: </b><br><br>
+                        <textarea id="mytextarea"></textarea>
+                        <label> 
+                      </div>
+                     
+                      <div style="text-align: right;"> 
+                      <button href="#" class="btn btn-primary btn-icon-split"  >
+                        <span class="icon text-white-50">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        <span class="text">Enviar resposta!</span>
+                    </button>
+                  </div>
+                  </form>
+                </div>
+                    
+                    
+                   </ul>
+                  
+                  </div>
+								
+						</div>
+					</div>
+          <script>tinymce.init({ selector:'textarea' });</script>
+						<!-- Pie Chart -->
+				
+											
+										</div>
+								</div>
+						</div>
+				</div>
+					<!-- final card -->
+					</div>
+					<!-- /.container-fluid -->
+
+				
+					
+				</div>
+				<!-- End of Main Content -->
+
+				<!-- Rodapé -->
+				<%- include ../template/rodape.ejs %>
+
+			</div>
+			<!-- End of Content Wrapper -->
+
+		</div>
+		<!-- End of Page Wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top">
+			<i class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			 aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-primary" href="login.html">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="<%= process.env.SERVER_PREFIX %>/vendor/jquery/jquery.min.js"></script>
+		<script src="<%= process.env.SERVER_PREFIX %>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="<%= process.env.SERVER_PREFIX %>/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="<%= process.env.SERVER_PREFIX %>/js/sb-admin-2.min.js"></script>
+
+		<script> 
+
+// 	$(document).ready(function(){
+//   	let idAluno = $('#id-aluno').val();
+// 		// monta a tabela de disciplinas
+// 		$.ajax({
+//     url: `http://localhost:8080/alunos/${idAluno}/disciplinas`,
+//     async: false,
+//     type: 'get',
+//     dataType: 'json',
+//     success: function(data){
+// 			let html = '';
+//         $.each(data, function(k, v){
+// 						console.log(k)
+// 					 	console.log(v)
+// 						html += `
+// 													<tr>
+// 															<td>${v.codigo}</td>
+// 															<td >${v.nome}</td>
+// 															<td>${v.sala}</td>
+// 															<td>${v.horario}</td>
+// 													 </tr>
+										
+// 												`; 
+
+//         });
+// 				$('#tabela-disciplinas-aluno tbody').html(html);  
+//     },
+//     error: function(error){
+//         console.log(error)
+//     }
+// });
+// 	// monta os cards de atividades do aluno
+// 	$.ajax({
+//     url: `http://localhost:8080/alunos/${idAluno}/atividades`,
+//     async: false,
+//     type: 'get',
+//     dataType: 'json',
+//     success: function(data){
+// 			let html = '';
+//         $.each(data, function(k, v){
+					
+
+// 						html += `
+// 										<div class="card-body"  >
+// 											<a class="card-atividade" href='<%= process.env.SERVER_PREFIX %>/atividades/detalhe/${v.codigo}' >
+// 											<div class="card bg-light mb-3 card-body-atividade" style="max-width: 15rem;box-shadow:  rgba(149, 157, 165, 0.1) 0px 4px 12px;">
+// 												<div class="card-header">${v.titulo}</div>
+// 												<div class="card-body">
+// 													<p class="card-title"><b>Postado em:</b> ${v.dataPostagem}</p>
+// 													<p class="card-title"><b>Responder até:</b> ${v.dataEntrega}</p>
+// 													<p class="card-text">${v.descricao}</p>
+// 												</div>
+// 											</div>
+// 											</a>
+// 										</div>
+										
+// 												`; 
+
+//         });
+// 				$('#cards-atividades').html(html); 
+			
+// 				$(".card-body-atividade").mouseenter(function() {
+					
+//     			$(this).css("box-shadow", "rgba(0, 0, 0, 0.30) 0px 5px 15px");
+// 					}).mouseleave(function() {
+//      		  $(this).css("box-shadow", " rgba(149, 157, 165, 0.1) 0px 4px 12px");
+// });
+
+//     },
+//     error: function(error){
+//         console.log(error)
+//     }
+// });
+
+// 	});
+		
+		
+		</script>
+
+	</body>
+
+</html>

@@ -3,7 +3,7 @@ const request = require('request');
 const base64Img = require('base64-img');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const rota = require('path').basename(__filename, '.js'); // usuario
+const rota = require('path').basename(__filename, '.js'); // atividades
 const fs = require('fs');
 var multer = require('multer');
 var upload = multer();
@@ -34,16 +34,20 @@ module.exports = async function (app) {
         next();
     });
     
-    app.get(process.env.SERVER_PREFIX + '/alunos/:idAluno/disciplinas', function(req, res) {
+    // /atividades/detalhe/${v.codigo}'
+    app.get(process.env.SERVER_PREFIX + '/atividades/detalhe/:codigo', function(req, res) {
+        let codigoAtividade = req.params.codigo;
         if (!req.session.token) {
             res.redirect( process.env.SERVER_PREFIX + '/app/login');
-        } else if (req.session.usuario.nivel != 'ADMIN') {
-            req.flash('danger', 'Acesso restrito! Somente usuários de nível ADMINISTRADOR podem acessar esta página');
+        } else if (req.session.usuario.nivel != 'ADMIN' && req.session.usuario.nivel != 'ALUNO') {
+            req.flash('danger', 'Acesso restrito! Somente usuários de nível ADMINISTRADOR ou ALUNO ou PROFESSOR podem acessar esta página');
             res.redirect( process.env.SERVER_PREFIX + '/');
-        } else {
+        } else{ 
 
+            console.log(req.params)
             teste = request({
-                url: process.env.API_HOST + req.params.idAluno ,
+                
+                url: process.env.API_HOST + rota + '/detalhe/' + req.params.codigo,
                 method: "GET",
                 json: true,
                 headers: {
@@ -51,25 +55,16 @@ module.exports = async function (app) {
                     "Authorization": req.session.token
                 },
             }, function (error, response, body) {
-               
-                if (validaRequisicao(response.statusCode, req, res)) {
-                    console.log(body)
-                    lista = [];
-                    for (var i = 0; i < Object.keys(body).length; i++) {
-                        const usuario = {
-                            // nome: body.data[i].id,
-                       
-                        };
-                        lista.push(usuario);
+                console.log(body)
+                 if (validaRequisicao(response.statusCode, req, res)) {
+                    
+                res.format({
+                 html: function () {
+                      res.render(rota + '/Detalhe', { disciplina: body, page: rota, informacoes: req.session.usuario });
                     }
-                    res.format({
-                        html: function () {
-                            res.render(rota + '/List', { itens: lista, page: rota, informacoes: req.session.usuario });
-
-                        }
-                    });
-                    return lista;
-                }
+                 });
+                    return true;
+                 }
 
 
             });

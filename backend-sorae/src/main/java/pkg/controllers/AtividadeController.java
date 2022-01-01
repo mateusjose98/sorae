@@ -1,5 +1,7 @@
 package pkg.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pkg.entities.Atividade;
+import pkg.entities.projections.AtividadeDetalhe;
+import pkg.repositories.AtividadeRepository;
 import pkg.services.impl.AtividadeService;
 
 @RestController
@@ -27,9 +31,17 @@ public class AtividadeController {
 	@Autowired
 	private AtividadeService service;
 	
+	@Autowired
+	private AtividadeRepository repository;
+	
 	@PostMapping @ResponseStatus(HttpStatus.CREATED)
 	public Atividade salvar(@RequestBody Atividade atividade) {
 		return service.salvar(atividade);
+	}
+	
+	@GetMapping("/detalhe/{idAtividade}")
+	public AtividadeDetalhe buscarAtividadeDetalhadaPorId(@PathVariable("idAtividade") Long idAtividade) {
+		return repository.buscarAtividadeDetalhadaPorId(idAtividade);
 	}
 	
 	@GetMapping("/{id}")

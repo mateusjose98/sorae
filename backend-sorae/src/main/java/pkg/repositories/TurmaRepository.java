@@ -24,7 +24,7 @@ public interface TurmaRepository extends JpaRepository<Turma, Long> {
 			+ "TITULO, "
 			+ "TO_CHAR(DATA_ENTREGA, 'DD/MM/YYYY HH24:MI') AS DATAENTREGA , "
 			+ "TO_CHAR(DATA_POSTAGEM, 'DD/MM/YYYY HH24:MI') AS DATAPOSTAGEM, "
-			+ "DESCRICAO "
+			+ " CONCAT(substring(DESCRICAO from 0 for 25), '...') as DESCRICAO  "
 			+ "FROM ATIVIDADE  "
 			+ "WHERE TURMA_DISCIPLINA_ID IN "
 			+ "( "
