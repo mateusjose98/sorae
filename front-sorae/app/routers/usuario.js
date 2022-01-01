@@ -482,6 +482,11 @@ module.exports = async function (app) {
 
 
 function validaRequisicao(statusCode, req, res) {
+    if(res == 500) {
+        req.flash("danger", "Algo deu errado!");
+       
+        res.redirect( process.env.SERVER_PREFIX + '/app/login');
+    }
     if (statusCode != 401) {
         return true
     } else {

@@ -1,12 +1,13 @@
 package pkg.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity  @DiscriminatorValue("PR")
@@ -17,9 +18,9 @@ public class Professor extends Usuario{
 	private String areaDeAtuacao;
 
 	
-	@JsonManagedReference
-	@ManyToMany(mappedBy = "professores", fetch = FetchType.LAZY)
-	private List<Turma> turmas;
+	@JsonIgnore
+	@ManyToMany(mappedBy = "professores")
+	private List<Turma> turmas = new ArrayList<>();
 
 	public String getTelefone() {
 		return telefone;

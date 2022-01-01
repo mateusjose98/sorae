@@ -12,9 +12,9 @@ import pkg.entities.projections.TurmaResumoDTO;
 
 public interface TurmaRepository extends JpaRepository<Turma, Long> {
 	
-	@Query(value = "select disciplina.codigo, disciplina.nome, turma_disciplina.sala, to_char( turma_disciplina.horario, 'HH24:MI' ) as horario "
+	@Query(value = "select disciplina.id as codigo, disciplina.nome, turma_disciplina.sala, to_char( turma_disciplina.horario, 'HH24:MI' ) as horario "
 			+ " from turma_disciplina "
-			+ " inner join disciplina on disciplina.codigo = turma_disciplina.fk_disciplina "
+			+ " inner join disciplina on disciplina.id = turma_disciplina.fk_disciplina "
 			+ " inner join turma on turma.codigo = turma_disciplina.fk_turma "
 			+ " where  turma.codigo in (select turma_id from turma_aluno where aluno_id = ?1)", nativeQuery = true)
 	List<TurmaResumoDTO> buscarDisciplinasDoAluno(Long idAluno);

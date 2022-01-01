@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pkg.dtos.UsuarioDTO;
 import pkg.entities.Aluno;
 import pkg.entities.Professor;
+import pkg.entities.Turma;
 import pkg.entities.Usuario;
 import pkg.enums.NivelEnum;
 import pkg.exception.CustomException;
@@ -204,9 +205,28 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public void delete(Long id) {
+		
 		Usuario u = usuarioRepository.findById(id).get();
-		u.setAtivo(false);
+		if (u!= null && (u instanceof Aluno)) {
+			Aluno a = (Aluno) u;
+			List<Turma> turmas = a.getTurmas();
+			for (int i = 0; i < turmas.size(); i++) {
+				turmas.get(i).removeAluno(a);
+			}
+		
+			
+		}
+		if (u!= null && (u instanceof Professor)) {
+			Professor p = (Professor) u;
+			List<Turma> turmas = p.getTurmas();
+			for (int i = 0; i < turmas.size(); i++) {
+				turmas.get(i).removeProfessor(p);
+			}
+			
+		}
 		
 		usuarioRepository.deleteById(id);
+		
+		
 	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -25,12 +26,12 @@ public class Atividade {
 	private LocalDateTime dataEntrega;
 	private String tipo;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "atividade")  @JsonManagedReference
 	private List<AlunoAtividade> alunoAtividade;
 	
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "turma_disciplina_id")
 	private TurmaDisciplina turmasDisciplina;
 

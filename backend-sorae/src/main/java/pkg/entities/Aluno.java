@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -38,13 +39,18 @@ public class Aluno extends Usuario{
     private List<AlunoAtividade> alunoAtividades;
 
     
-    @ManyToMany
-	 @JoinTable(name = "turma_aluno", 
-	   joinColumns = @JoinColumn(name = "aluno_id"), 
-	   inverseJoinColumns = @JoinColumn(name = "turma_id"))
+    @ManyToMany(mappedBy = "alunos") @JsonIgnore
     private List<Turma> turmas = new ArrayList<>();
     
-   
+//    public void addTurma(Turma turma) {
+//    	turmas.add(turma);
+//    	turma.getAlunos().add(this);
+//    }
+// 
+//    public void removeTag(Turma turma) {
+//    	turmas.remove(turma);
+//    	turma.getAlunos().remove(this);
+//    }
 
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
