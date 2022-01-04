@@ -50,6 +50,8 @@ Caro leitor, o endpoint de Autenticação é um POST para localhost:8080/auth/si
 "username" : "admin",
 "password": "admin"
 }
-isso deve lhe dar um token, este token deverá ser repassado nas requisições posteriores (Authorization: Bearer <SEU_TOKEN>)
+isso deve lhe dar um token, este token deverá ser repassado nas requisições posteriores (Authorization: Bearer <SEU_TOKEN>). Para rodar o front-end, é necessário ter o NodeJS instalado. Entre na pasta raíz do projeto front-end e rode o comando 
+"npm install && 
+npm start"
 
 - _Este projeto está sendo feito para fins acadêmicos para a disciplina de Projeto e Desenvolvimento de Software, no curso Bacharelado Intedisciplinar em Ciência e Tec._
