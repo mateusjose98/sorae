@@ -85,7 +85,7 @@
 												<table class="table" id="tabela-disciplinas-aluno">
 													<thead>
 														<tr>
-															<th>Código</th>
+															<th>Código</th> 
 															<th>Nome</th>
 															<th>Sala</th>
 															<th>Horário</th>
@@ -216,13 +216,15 @@
     success: function(data){
 			let html = '';
         $.each(data, function(k, v){
-					
-
+					var icon = "";
+						if(v.respondido == true) {
+							icon = '<i style="color: #009900"  class="fas fa-check"></i>';
+						}
 						html += `
 										<div class="card-body"  >
 											<a class="card-atividade" href='<%= process.env.SERVER_PREFIX %>/atividades/detalhe/${v.codigo}' >
 											<div class="card bg-light mb-3 card-body-atividade" style="max-width: 15rem;box-shadow:  rgba(149, 157, 165, 0.1) 0px 4px 12px;">
-												<div class="card-header">${v.titulo}</div>
+												<div class="card-header">${icon} ${v.titulo} </div>
 												<div class="card-body">
 													<p class="card-title"><b>Postado em:</b> ${v.dataPostagem}</p>
 													<p class="card-title"><b>Responder até:</b> ${v.dataEntrega}</p>

@@ -20,16 +20,30 @@ public interface TurmaRepository extends JpaRepository<Turma, Long> {
 	List<TurmaResumoDTO> buscarDisciplinasDoAluno(Long idAluno);
 	
 	
-	@Query(value = "SELECT CODIGO, "
-			+ "TITULO, "
-			+ "TO_CHAR(DATA_ENTREGA, 'DD/MM/YYYY HH24:MI') AS DATAENTREGA , "
-			+ "TO_CHAR(DATA_POSTAGEM, 'DD/MM/YYYY HH24:MI') AS DATAPOSTAGEM, "
-			+ " CONCAT(substring(DESCRICAO from 0 for 25), '...') as DESCRICAO  "
-			+ "FROM ATIVIDADE  "
-			+ "WHERE TURMA_DISCIPLINA_ID IN "
-			+ "( "
-			+ "SELECT ID FROM TURMA_DISCIPLINA WHERE FK_TURMA IN "
-			+ "      (SELECT TURMA_ID FROM TURMA_ALUNO WHERE ALUNO_ID = ?1) "
+//	@Query(value = "SELECT CODIGO, "
+//			+ "TITULO, "
+//			+ "TO_CHAR(DATA_ENTREGA, 'DD/MM/YYYY HH24:MI') AS DATAENTREGA , "
+//			+ "TO_CHAR(DATA_POSTAGEM, 'DD/MM/YYYY HH24:MI') AS DATAPOSTAGEM, "
+//			+ " CONCAT(substring(DESCRICAO from 0 for 25), '...') as DESCRICAO  "
+//			+ "FROM ATIVIDADE  "
+//			+ "WHERE TURMA_DISCIPLINA_ID IN "
+//			+ "( "
+//			+ "SELECT ID FROM TURMA_DISCIPLINA WHERE FK_TURMA IN "
+//			+ "      (SELECT TURMA_ID FROM TURMA_ALUNO WHERE ALUNO_ID = ?1) "
+//			+ ") ", nativeQuery = true)
+//	List<AtividadeResumoDTO> buscarAtividadesDaTurmaDoAluno(Long idAluno);
+//	
+	
+	
+	@Query(value = "SELECT  "
+			+ "(case when subalunoatividade.codigo is not null then true else false end) as respondido, "
+			+ "atv.CODIGO, TITULO, TO_CHAR(DATA_ENTREGA, 'DD/MM/YYYY HH24:MI') AS DATAENTREGA , TO_CHAR(DATA_POSTAGEM, 'DD/MM/YYYY HH24:MI') AS DATAPOSTAGEM, "
+			+ " CONCAT(substring(DESCRICAO from 0 for 25), '...') as DESCRICAO   "
+			+ "FROM ATIVIDADE atv "
+			+ "left join (select * from aluno_atividade aa where aluno_id = ?1) subalunoatividade on subalunoatividade.codigo = atv.CODIGO "
+			+ "WHERE TURMA_DISCIPLINA_ID IN  "
+			+ "( SELECT ID FROM TURMA_DISCIPLINA WHERE FK_TURMA IN  "
+			+ "		(SELECT TURMA_ID FROM TURMA_ALUNO WHERE ALUNO_ID = ?1)  "
 			+ ") ", nativeQuery = true)
 	List<AtividadeResumoDTO> buscarAtividadesDaTurmaDoAluno(Long idAluno);
 }
