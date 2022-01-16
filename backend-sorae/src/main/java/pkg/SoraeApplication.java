@@ -231,11 +231,35 @@ public class SoraeApplication {
 			a4.setDataPostagem(LocalDateTime.of(2020, 01, 01, 7, 10));
 			a5.setDataPostagem(LocalDateTime.of(2020, 01, 01, 10, 10));
 
-			a1.setDescricao("Uma atividade para agregar na nota 1");
-			a2.setDescricao("Faça uma Redação sobre ...");
-			a3.setDescricao("Entregar o relatório sobre a feira de ciências");
-			a4.setDescricao("Atividade avaliativa 3");
-			a5.setDescricao("Atividade avaliativa 2");
+			a1.setDescricao("Uma atividade para agregar na nota 1 Um texto é uma ocorrência linguística, escrita ou falada de qualquer extensão, dotada de unidade sociocomunicativa, semântica e formal. É uma unidade de linguagem em uso.\"[3]\n"
+
+					+ "O interesse pelo texto como objeto de estudo gerou vários trabalhos importantes de teóricos da Linguística Textual, que percorreram fases diversas cujas características principais eram transpor os limites da frase descontextualizada da gramática tradicional e ainda incluir os relevantes papéis do autor e do leitor na construção de textos.\n"
+
+					+ "Um texto pode ser escrito ou oral e, em sentido lato, pode ser também não verbal.\n"
+
+					+ "Texto crítico é uma produção textual que parte de um processo reflexivo e analítico gerando um conteúdo com crítica construtiva e bem fundamentada.\n"
+
+					+ "Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.");
+			a2.setDescricao("Faça uma Redação sobre Um texto pode ser escrito ou oral e, em sentido lato, pode ser também não verbal.\n"
+			
+					+ "Texto crítico é uma produção textual que parte de um processo reflexivo e analítico gerando um conteúdo com crítica construtiva e bem fundamentada.\n"
+		
+					+ "Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.");
+			a3.setDescricao("Entregar o relatório sobre a feira de ciências Um texto pode ser escrito ou oral e, em sentido lato, pode ser também não verbal.\n"
+			
+					+ "Texto crítico é uma produção textual que parte de um processo reflexivo e analítico gerando um conteúdo com crítica construtiva e bem fundamentada.\n"
+			
+					+ "Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.");
+			a4.setDescricao("Atividade avaliativa 3 Um texto pode ser escrito ou oral e, em sentido lato, pode ser também não verbal.\n"
+				
+					+ "Texto crítico é uma produção textual que parte de um processo reflexivo e analítico gerando um conteúdo com crítica construtiva e bem fundamentada.\n"
+		
+					+ "Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.");
+			a5.setDescricao("Atividade avaliativa 2 Um texto pode ser escrito ou oral e, em sentido lato, pode ser também não verbal.\n"
+				
+					+ "Texto crítico é uma produção textual que parte de um processo reflexivo e analítico gerando um conteúdo com crítica construtiva e bem fundamentada.\n"
+				
+					+ "Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.");
 
 			a1.setTipo("AV");
 			a2.setTipo("AV");

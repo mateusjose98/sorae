@@ -2,6 +2,7 @@ package pkg.entities.projections;
 
 public interface AtividadeDetalhe {
 	
+	public Long getIdAtividade();
 	public Long getIdProfessor();
 	public String getNomeProfessor();
 	public String getTitulo();
@@ -9,6 +10,7 @@ public interface AtividadeDetalhe {
 	public String getDisciplina();
 	public String getDataPostagem();
 	public String getDataEntrega();
+	
 	
 	
 

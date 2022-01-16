@@ -79,15 +79,17 @@
                     <li class="list-group-item">  <b> Descrição da atividade: </b> <%= disciplina.descricaoAtividade %> </li>
                     
                     <div> 
-                    <form class="form" action=""></form>
+										
+                    <form class="form" action="<%= process.env.SERVER_PREFIX %>/app/<%= page %>/responder" method="post">
+										<input type="hidden" name="idAtividade" value="<%= disciplina.idAtividade %>"/>
                       <div class="form-group">
                         <br><br> <b> Responder atividade: </b><br><br>
-                        <textarea id="mytextarea"></textarea>
+                        <textarea id="mytextarea" name="resposta"></textarea>
                         <label> 
                       </div>
                      
                       <div style="text-align: right;"> 
-                      <button href="#" class="btn btn-primary btn-icon-split"  >
+                      <button type="submit" class="btn btn-primary btn-icon-split"  >
                         <span class="icon text-white-50">
                             <i class="fas fa-check"></i>
                         </span>
@@ -167,80 +169,7 @@
 
 		<script> 
 
-// 	$(document).ready(function(){
-//   	let idAluno = $('#id-aluno').val();
-// 		// monta a tabela de disciplinas
-// 		$.ajax({
-//     url: `http://localhost:8080/alunos/${idAluno}/disciplinas`,
-//     async: false,
-//     type: 'get',
-//     dataType: 'json',
-//     success: function(data){
-// 			let html = '';
-//         $.each(data, function(k, v){
-// 						console.log(k)
-// 					 	console.log(v)
-// 						html += `
-// 													<tr>
-// 															<td>${v.codigo}</td>
-// 															<td >${v.nome}</td>
-// 															<td>${v.sala}</td>
-// 															<td>${v.horario}</td>
-// 													 </tr>
-										
-// 												`; 
 
-//         });
-// 				$('#tabela-disciplinas-aluno tbody').html(html);  
-//     },
-//     error: function(error){
-//         console.log(error)
-//     }
-// });
-// 	// monta os cards de atividades do aluno
-// 	$.ajax({
-//     url: `http://localhost:8080/alunos/${idAluno}/atividades`,
-//     async: false,
-//     type: 'get',
-//     dataType: 'json',
-//     success: function(data){
-// 			let html = '';
-//         $.each(data, function(k, v){
-					
-
-// 						html += `
-// 										<div class="card-body"  >
-// 											<a class="card-atividade" href='<%= process.env.SERVER_PREFIX %>/atividades/detalhe/${v.codigo}' >
-// 											<div class="card bg-light mb-3 card-body-atividade" style="max-width: 15rem;box-shadow:  rgba(149, 157, 165, 0.1) 0px 4px 12px;">
-// 												<div class="card-header">${v.titulo}</div>
-// 												<div class="card-body">
-// 													<p class="card-title"><b>Postado em:</b> ${v.dataPostagem}</p>
-// 													<p class="card-title"><b>Responder até:</b> ${v.dataEntrega}</p>
-// 													<p class="card-text">${v.descricao}</p>
-// 												</div>
-// 											</div>
-// 											</a>
-// 										</div>
-										
-// 												`; 
-
-//         });
-// 				$('#cards-atividades').html(html); 
-			
-// 				$(".card-body-atividade").mouseenter(function() {
-					
-//     			$(this).css("box-shadow", "rgba(0, 0, 0, 0.30) 0px 5px 15px");
-// 					}).mouseleave(function() {
-//      		  $(this).css("box-shadow", " rgba(149, 157, 165, 0.1) 0px 4px 12px");
-// });
-
-//     },
-//     error: function(error){
-//         console.log(error)
-//     }
-// });
-
-// 	});
 		
 		
 		</script>

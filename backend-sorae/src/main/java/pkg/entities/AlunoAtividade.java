@@ -1,5 +1,6 @@
 package pkg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,9 @@ public class AlunoAtividade {
 	private Atividade atividade;
 	
 	private Double notaDoAluno;
+	
+	@Column(columnDefinition = "TEXT")
+	private String resposta;
 	
 
 }
