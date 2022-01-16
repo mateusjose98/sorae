@@ -35,7 +35,7 @@
 
 ### Diagrama de casos de uso:
 
-![texto](./DiagramadeCasodeUso.jpeg)
+![Diagrama de caso de uso](https://user-images.githubusercontent.com/86702133/149666606-64ce548a-71b6-49db-a012-cf42f0f3c18d.png)
 
 ### Tecnologias usadas:
 
