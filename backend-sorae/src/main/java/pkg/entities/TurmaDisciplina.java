@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -37,7 +38,7 @@ public class TurmaDisciplina {
 	@OneToMany(mappedBy = "turmasDisciplina")
 	private List<Atividade> atividades;
 	
-	@OneToOne
+	@ManyToOne @JsonBackReference
 	@JoinColumn(name = "professor_id")
 	private Professor professor;
 }

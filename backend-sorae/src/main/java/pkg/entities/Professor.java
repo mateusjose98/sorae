@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -17,10 +17,9 @@ public class Professor extends Usuario{
 	private String telefone;
 	private String areaDeAtuacao;
 
+	@OneToMany(mappedBy = "professor") @JsonManagedReference
+	private List<TurmaDisciplina> turmas = new ArrayList<>();
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "professores")
-	private List<Turma> turmas = new ArrayList<>();
 
 	public String getTelefone() {
 		return telefone;
@@ -39,16 +38,13 @@ public class Professor extends Usuario{
 	}
 
 
-	public List<Turma> getTurmas() {
+
+	public List<TurmaDisciplina> getTurmas() {
 		return turmas;
 	}
 
-	public void setTurmas(List<Turma> turmas) {
+	public void setTurmas(List<TurmaDisciplina> turmas) {
 		this.turmas = turmas;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 

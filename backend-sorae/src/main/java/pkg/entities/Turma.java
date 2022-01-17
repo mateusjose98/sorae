@@ -29,9 +29,6 @@ public class Turma {
 
 	private Integer ano;
 
-	@ManyToMany
-	@JoinTable(name = "turma_professor", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
-	private List<Professor> professores = new ArrayList<>();
 
 	@ManyToMany
 	@JoinTable(name = "turma_aluno", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "aluno_id"))
@@ -47,14 +44,6 @@ public class Turma {
 		aluno.getTurmas().remove(this);
 	}
 
-	public void addProfessor(Professor professor) {
-		this.professores.add(professor);
-		professor.getTurmas().add(this);
-	}
 
-	public void removeProfessor(Professor professor) {
-		this.professores.remove(professor);
-		professor.getTurmas().remove(this);
-	}
 
 }

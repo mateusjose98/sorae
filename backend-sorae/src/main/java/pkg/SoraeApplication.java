@@ -108,7 +108,7 @@ public class SoraeApplication {
 			t1.setDescricao("9-ANO-C");
 			// ALUNO E PROFESSOR NA TURMA
 			t1.addAluno(aluno);
-			t1.addProfessor(professor);
+			
 
 			turmaRepository.save(t1);
 			

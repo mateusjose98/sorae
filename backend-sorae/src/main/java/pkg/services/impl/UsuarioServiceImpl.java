@@ -218,9 +218,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 		}
 		if (u!= null && (u instanceof Professor)) {
 			Professor p = (Professor) u;
-			List<Turma> turmas = p.getTurmas();
+			var turmas = p.getTurmas();
 			for (int i = 0; i < turmas.size(); i++) {
-				turmas.get(i).removeProfessor(p);
+				turmas.get(i).setProfessor(null);
 			}
 			
 		}
