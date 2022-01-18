@@ -37,6 +37,10 @@
 
 ![Diagrama de caso de uso](https://user-images.githubusercontent.com/86702133/149666606-64ce548a-71b6-49db-a012-cf42f0f3c18d.png)
 
+### Diagrama de Estado:
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/86702133/149948798-b2c7c1d4-5a26-44a9-a367-81d641bf33f0.png)
+
 ### Tecnologias usadas:
 
 - Java;
