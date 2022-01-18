@@ -35,7 +35,7 @@ public class TurmaDisciplina {
 	@JoinColumn(name = "fk_disciplina")
 	private Disciplina disciplina;
 	
-	@OneToMany(mappedBy = "turmasDisciplina")
+	@OneToMany(mappedBy = "turmasDisciplina") @JsonBackReference
 	private List<Atividade> atividades;
 	
 	@ManyToOne @JsonBackReference

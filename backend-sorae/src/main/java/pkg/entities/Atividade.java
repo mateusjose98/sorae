@@ -33,7 +33,7 @@ public class Atividade {
 	private List<AlunoAtividade> alunoAtividade;
 	
 	
-	@ManyToOne @JsonIgnore
+	@ManyToOne @JsonManagedReference
 	@JoinColumn(name = "turma_disciplina_id")
 	private TurmaDisciplina turmasDisciplina;
 
