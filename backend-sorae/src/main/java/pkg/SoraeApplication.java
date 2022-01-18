@@ -168,6 +168,7 @@ public class SoraeApplication {
 			td2.setHorario(LocalDateTime.of(2020, 01, 01, 9, 10));
 			td2.setTurma(t1);
 			td2.setSala("203-A");
+			td2.setProfessor(professor);
 
 			TurmaDisciplina td3 = new TurmaDisciplina();
 			td3.setDisciplina(d3);

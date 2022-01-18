@@ -46,7 +46,7 @@
 						<%- messages() %>
 				
 						
-						
+		<% if(informacoes.niveis !=null && informacoes.niveis[0]=='ALUNO' ) {%>
 						<!-- Page Heading -->
 						<h1 class="h3 mb-4 text-gray-800"><%= informacoes.nome %> - <%= informacoes.serie %></h1>
 
@@ -130,7 +130,94 @@
 					
 				</div>
 				<!-- End of Main Content -->
+				<%}%>
 
+				
+				 <% if(informacoes.niveis !=null && informacoes.niveis[0]=='PROFESSOR' ) {%>
+	<!-- Page Heading -->
+	<h1 class="h3 mb-4 text-gray-800"><%= informacoes.nome %></h1>
+
+	<!-- card -->
+<div class="row">
+
+<!-- Area Chart -->
+
+<div class="col-xl-8 col-lg-3">
+		<div class="card shadow mb-4">
+				<!-- Card Header - Dropdown -->
+				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">Suas disciplinas</h6>
+						<!-- <div class="dropdown no-arrow">
+								<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+										<div class="dropdown-header">Dropdown Header:</div>
+										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="#">Another action</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+						</div> -->
+				</div>
+				<!-- Card Body -->
+			
+
+			<input style="display:none;" type="text" class="form-control hidden" id="id-professor" name="id-professor" value="<%= informacoes.id %>">
+
+		
+			<div class="table-responsive">
+				<div class="card-body">
+						<div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+						<table class="table" id="tabela-disciplinas-aluno">
+							<thead>
+								<tr>
+									<th>Código</th> 
+									<th>Nome</th>
+									<th>Sala</th>
+									<th>Horário</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+						
+							</tbody>
+						</table>
+						</div>
+				</div>
+		</div>
+</div>
+</div>
+<!-- Pie Chart -->
+<div class="col-xl-4 col-lg-5">
+		<div class="card shadow mb-4">
+				<!-- Card Header - Dropdown -->
+				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">Suas Atividades <i class="fas fa-plus"></i></h6>
+				</div>
+			
+				<div class="card-deck" id="cards-atividades">
+				</div>
+					
+
+						<!-- <div class="chart-pie"><div class="chartjs-size-monitor"> -->
+							<div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+								<!-- <canvas id="myPieChart" width="552" height="245" style="display: block; width: 552px; height: 245px;" class="chartjs-render-monitor"></canvas> -->
+						</div>
+					
+				</div>
+		</div>
+</div>
+</div>
+<!-- final card -->
+</div>
+<!-- /.container-fluid -->
+
+
+
+</div>
+<!-- End of Main Content -->
+					<%}%> <!--PROFESSOR FINAL-->
 				<!-- Rodapé -->
 				<%- include rodape.ejs %>
 

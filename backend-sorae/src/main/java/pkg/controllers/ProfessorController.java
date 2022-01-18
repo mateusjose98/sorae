@@ -31,7 +31,7 @@ public class ProfessorController {
         return professorService.cadastraProfessor(professor);
     }
 
-    @GetMapping("/idprofessor")
+    @GetMapping("/{idprofessor}")
     public Professor acharPorIdProfessor(@PathVariable Long idprofessor){
         return professorService
                 .acharPorIdprofessor(idprofessor)
@@ -44,7 +44,7 @@ public class ProfessorController {
         return professorService.cadastraProfessor(professor);
     }
 
-    @DeleteMapping("/idprofessor")
+    @DeleteMapping("/{idprofessor}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarProfessor(@PathVariable Long idprofessor) {
         professorService        
