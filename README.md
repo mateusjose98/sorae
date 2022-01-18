@@ -13,10 +13,8 @@
 - [RF5] - O sistema deve possuir área de autenticação para Aluno, Professor;
 - [RF6] - A Coordenação faz as atribuições de disciplinas a professores;
 - [RF7] - O Professor poderá fazer o cadastro do planejamento da disciplina que ministrará;
-- [RF8] - O Professor poderá realizar chamadas e o sistema armazenará as frequências dos alunos;
-- [RF9]- O Professor faz atribuição de notas às atividades/provas;
-- [RF10]- O Aluno enviar resposta a atividades/provas;
-- [RF11]- O sistema gera um resumo (histórico acadêmico) do aluno;
+- [RF8]- O Professor faz atribuição de notas às atividades/provas;
+- [RF9]- O Aluno enviar resposta a atividades/provas.
 
 ### Requisitos não funcionais [RNFs]:
 
