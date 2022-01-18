@@ -41,6 +41,11 @@
 
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/86702133/149948798-b2c7c1d4-5a26-44a9-a367-81d641bf33f0.png)
 
+### Diagrama de Sequência:
+
+![Untitled Diagram (6)](https://user-images.githubusercontent.com/86702133/150019269-9c95511b-e99e-4c18-8b05-7284e6832af2.jpg)
+
+
 ### Tecnologias usadas:
 
 - Java;
