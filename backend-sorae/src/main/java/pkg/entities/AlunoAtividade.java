@@ -16,7 +16,7 @@ import lombok.Data;
 public class AlunoAtividade {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+	private Long id;
 	
 	@ManyToOne @JsonBackReference
 	@JoinColumn(name = "aluno_id")

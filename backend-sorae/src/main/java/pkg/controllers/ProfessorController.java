@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pkg.entities.AlunoAtividade;
+import pkg.entities.Atividade;
 import pkg.entities.Professor;
+import pkg.services.impl.AlunoAtividadeService;
+import pkg.services.impl.AtividadeService;
 import pkg.services.impl.ProfessorService;
 import pkg.services.impl.TurmaDisciplinaService;
 
@@ -29,6 +33,10 @@ public class ProfessorController {
     private ProfessorService professorService;
     @Autowired
     private TurmaDisciplinaService turmaDisciplinaService;
+    @Autowired
+    private AlunoAtividadeService alunoAtividadeService;
+    @Autowired
+    private AtividadeService atividadeService;
 
 
     @PostMapping("/cadastro") @ResponseStatus(HttpStatus.CREATED)
@@ -73,5 +81,22 @@ public class ProfessorController {
 
         return professorService.buscarAtividadesDeProfessor(idprofessor);
     }
-    
+
+    @GetMapping("/{idprofessor}/atividades/respostas")
+    public List repostasDasAtividadesDeProfessor(@PathVariable ("idprofessor") Long idprofessor){
+
+        List<Atividade> listAtv = acharAtividadesDeProfessor(idprofessor);
+
+        return professorService.buscarRespostaAtividadesDeProfessor(listAtv);
+    }
+
+
+    @GetMapping("/{idatividade}/resposta")
+    public List<AlunoAtividade> respostaDeAtividade(@PathVariable ("idatividade") Long idatividade){
+
+        return alunoAtividadeService.buscarRespostasAtividadesDeProfessor(idatividade);
+
+    }
+
+
 }
