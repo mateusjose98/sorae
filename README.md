@@ -13,10 +13,8 @@
 - [RF5] - O sistema deve possuir área de autenticação para Aluno, Professor;
 - [RF6] - A Coordenação faz as atribuições de disciplinas a professores;
 - [RF7] - O Professor poderá fazer o cadastro do planejamento da disciplina que ministrará;
-- [RF8] - O Professor poderá realizar chamadas e o sistema armazenará as frequências dos alunos;
-- [RF9]- O Professor faz atribuição de notas às atividades/provas;
-- [RF10]- O Aluno enviar resposta a atividades/provas;
-- [RF11]- O sistema gera um resumo (histórico acadêmico) do aluno;
+- [RF8]- O Professor faz atribuição de notas às atividades/provas;
+- [RF9]- O Aluno enviar resposta a atividades/provas.
 
 ### Requisitos não funcionais [RNFs]:
 
@@ -40,6 +38,11 @@
 ### Diagrama de Estado:
 
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/86702133/149948798-b2c7c1d4-5a26-44a9-a367-81d641bf33f0.png)
+
+### Diagrama de Sequência:
+
+![Untitled Diagram (6)](https://user-images.githubusercontent.com/86702133/150019269-9c95511b-e99e-4c18-8b05-7284e6832af2.jpg)
+
 
 ### Tecnologias usadas:
 
