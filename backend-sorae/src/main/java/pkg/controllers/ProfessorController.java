@@ -68,5 +68,10 @@ public class ProfessorController {
         return professorService.buscarDisciplinaDeProfessor(idprofessor);
     }
 
+    @GetMapping("/{idprofessor}/atividades")
+    public List acharAtividadesDeProfessor(@PathVariable ("idprofessor") Long idprofessor){
+
+        return professorService.buscarAtividadesDeProfessor(idprofessor);
+    }
     
 }

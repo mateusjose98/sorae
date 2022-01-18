@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pkg.entities.Atividade;
 import pkg.entities.Professor;
 import pkg.repositories.ProfessorRepository;
 
@@ -53,5 +54,31 @@ public class ProfessorService {
         });
 
         return listaDisciplinas;
+    }
+
+    public List buscarAtividadesDeProfessor(Long idprofessor) {
+
+        List<Long> idTurma = new ArrayList<>();
+        List<Long> idAtv = new ArrayList<>();
+
+        List<Atividade> listaAtividades = new ArrayList<>();
+
+
+        professorRepository.findById(idprofessor).get().getTurmas()
+                .forEach(turmaDisciplina -> {
+                    idTurma.add(turmaDisciplina.getId());
+                });
+
+
+        idTurma.forEach(idTD ->{
+            List<Atividade> listaAtividadesTemporaria = turmaDisciplinaService.buscarAtividadeDeTD(idTD);
+
+            listaAtividadesTemporaria.forEach(atv ->{
+                listaAtividades.add(atv);
+            });
+        });
+
+
+        return listaAtividades;
     }
 }
