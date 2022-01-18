@@ -16,6 +16,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pkg.entities.Professor;
 import pkg.services.impl.ProfessorService;
+import pkg.services.impl.TurmaDisciplinaService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/professor")
@@ -24,6 +27,8 @@ public class ProfessorController {
 
     @Autowired
     private ProfessorService professorService;
+    @Autowired
+    private TurmaDisciplinaService turmaDisciplinaService;
 
 
     @PostMapping("/cadastro") @ResponseStatus(HttpStatus.CREATED)
@@ -44,7 +49,7 @@ public class ProfessorController {
         return professorService.cadastraProfessor(professor);
     }
 
-    @DeleteMapping("/{idprofessor}")
+    @DeleteMapping("/idprofessor")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarProfessor(@PathVariable Long idprofessor) {
         professorService        
@@ -57,6 +62,11 @@ public class ProfessorController {
 
     }
 
+    @GetMapping("/{idprofessor}/disciplinas")
+    public List acharDisciplinasDeProfessor(@PathVariable ("idprofessor") Long idprofessor){
+
+        return professorService.buscarDisciplinaDeProfessor(idprofessor);
+    }
 
     
 }

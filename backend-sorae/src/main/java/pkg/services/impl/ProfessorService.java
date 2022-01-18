@@ -1,5 +1,7 @@
 package pkg.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class ProfessorService {
     
     @Autowired
     private ProfessorRepository professorRepository;
+    @Autowired
+    private TurmaDisciplinaService turmaDisciplinaService;
 
     public Professor cadastraProfessor(Professor professor) {
         return professorRepository.save(professor);
@@ -31,6 +35,23 @@ public class ProfessorService {
         }
     }
 
-   
-    
+
+    public List<String> buscarDisciplinaDeProfessor(Long idprofessor) {
+        List<Long> idTurmaDisciplina = new ArrayList<>();
+
+        List<String> listaDisciplinas = new ArrayList<>();
+
+
+        professorRepository.findById(idprofessor).get().getTurmas()
+                .forEach(turmaDisciplina -> {
+                    idTurmaDisciplina.add(turmaDisciplina.getId());
+                });
+
+        idTurmaDisciplina.forEach(id -> {
+            listaDisciplinas.add(turmaDisciplinaService.buscarDisciplinasDoProfessorPorId(id).getDisciplina().getNome());
+
+        });
+
+        return listaDisciplinas;
+    }
 }
